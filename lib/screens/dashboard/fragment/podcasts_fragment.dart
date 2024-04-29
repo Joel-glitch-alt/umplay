@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:umplay/screens/dashboard/component/top_artists_component.dart';
 
 import '../../../components/app_scaffold.dart';
 import '../../../components/cached_image_widget.dart';
@@ -8,7 +9,6 @@ import '../../../utils/common.dart';
 import '../../../utils/images.dart';
 import '../../notification/notification_screen.dart';
 import '../../search/search_screen.dart';
-import '../component/popular_artists_component.dart';
 import '../model/dashboard_data_model.dart';
 
 class PodcastsFragment extends StatefulWidget {
@@ -47,20 +47,27 @@ class _PodcastsFragmentState extends State<PodcastsFragment> {
           itemCount: 4,
           crossAxisAlignment: WrapCrossAlignment.start,
           itemBuilder: (ctx, index) {
-            DashBoardDataModel popularPodCastsDataList = popularPodcastsList[index];
+            DashBoardDataModel popularPodCastsDataList =
+                popularPodcastsList[index];
             return Container(
               width: context.width() / 2 - 24,
               padding: EdgeInsets.all(8),
               decoration: boxDecorationDefault(
                 color: Colors.grey.withAlpha(25),
                 borderRadius: radius(18),
-                boxShadow: defaultBoxShadow(blurRadius: 0, shadowColor: Colors.black.withAlpha(20), spreadRadius: 0),
+                boxShadow: defaultBoxShadow(
+                    blurRadius: 0,
+                    shadowColor: Colors.black.withAlpha(20),
+                    spreadRadius: 0),
               ),
               child: Container(
                 decoration: boxDecorationDefault(
                   color: Colors.grey.withAlpha(25),
                   borderRadius: radius(18),
-                  boxShadow: defaultBoxShadow(blurRadius: 0, shadowColor: Colors.black.withAlpha(20), spreadRadius: 0),
+                  boxShadow: defaultBoxShadow(
+                      blurRadius: 0,
+                      shadowColor: Colors.black.withAlpha(20),
+                      spreadRadius: 0),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,11 +82,14 @@ class _PodcastsFragmentState extends State<PodcastsFragment> {
                       maxLines: 2,
                       list: [
                         TextSpan(
-                          text: popularPodCastsDataList.podcastsTitle.splitBefore(':') + ' : ',
+                          text: popularPodCastsDataList.podcastsTitle
+                                  .splitBefore(':') +
+                              ' : ',
                           style: primaryTextStyle(size: 12),
                         ),
                         TextSpan(
-                          text: popularPodCastsDataList.podcastsTitle.splitAfter(':'),
+                          text: popularPodCastsDataList.podcastsTitle
+                              .splitAfter(':'),
                           style: secondaryTextStyle(size: 12, height: 1.5),
                         ),
                       ],
@@ -117,7 +127,10 @@ class _PodcastsFragmentState extends State<PodcastsFragment> {
               decoration: boxDecorationDefault(
                 color: Colors.grey.withAlpha(25),
                 borderRadius: radius(18),
-                boxShadow: defaultBoxShadow(blurRadius: 0, shadowColor: Colors.black.withAlpha(20), spreadRadius: 0),
+                boxShadow: defaultBoxShadow(
+                    blurRadius: 0,
+                    shadowColor: Colors.black.withAlpha(20),
+                    spreadRadius: 0),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,7 +141,11 @@ class _PodcastsFragmentState extends State<PodcastsFragment> {
                     width: context.width(),
                     fit: BoxFit.fill,
                   ).cornerRadiusWithClipRRect(18).paddingAll(10),
-                  Marquee(child: Text(topPodcastsListData.podcastsTitle.validate(), style: primaryTextStyle())).paddingAll(10),
+                  Marquee(
+                          child: Text(
+                              topPodcastsListData.podcastsTitle.validate(),
+                              style: primaryTextStyle()))
+                      .paddingAll(10),
                 ],
               ),
             );
@@ -147,7 +164,8 @@ class _PodcastsFragmentState extends State<PodcastsFragment> {
         actionWidget1: IconButton(
           icon: Image.asset(ic_search, height: 22, width: 22),
           onPressed: () {
-            SearchScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+            SearchScreen()
+                .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
           },
         ),
         actionWidget2: IconButton(
@@ -162,7 +180,7 @@ class _PodcastsFragmentState extends State<PodcastsFragment> {
         children: [
           buildPopularPodcastWidget(),
           16.height,
-          PopularArtistsComponent(),
+          TopArtistsComponent(),
           16.height,
           buildTopPodcastWidget(),
         ],

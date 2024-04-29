@@ -9,7 +9,7 @@ import '../../../utils/common.dart';
 import '../../../utils/images.dart';
 import '../../notification/notification_screen.dart';
 import '../../search/search_screen.dart';
-import '../component/popular_artists_component.dart';
+import '../component/top_artists_component.dart';
 import '../model/dashboard_data_model.dart';
 
 class ArtistsFragment extends StatefulWidget {
@@ -20,7 +20,12 @@ class ArtistsFragment extends StatefulWidget {
 class _ArtistsFragmentState extends State<ArtistsFragment> {
   List<DashBoardDataModel> getFavoriteArtistList = getFavoritesArtistsList();
 
-  List<String> artistList = [alan_walker_artists, tim_david_artists, marsh_mello_artists, akon_artists];
+  List<String> artistList = [
+    alan_walker_artists,
+    tim_david_artists,
+    marsh_mello_artists,
+    akon_artists
+  ];
   List<String> artistName = ['Alan Walker', 'Tim David', 'MarshMellow', 'Akon'];
 
   int selectArtistIndex = 0;
@@ -52,7 +57,10 @@ class _ArtistsFragmentState extends State<ArtistsFragment> {
           decoration: boxDecorationDefault(
             color: Colors.grey.withAlpha(25),
             borderRadius: radius(18),
-            boxShadow: defaultBoxShadow(blurRadius: 0, shadowColor: Colors.black.withAlpha(20), spreadRadius: 0),
+            boxShadow: defaultBoxShadow(
+                blurRadius: 0,
+                shadowColor: Colors.black.withAlpha(20),
+                spreadRadius: 0),
           ),
           child: Stack(
             children: [
@@ -74,13 +82,21 @@ class _ArtistsFragmentState extends State<ArtistsFragment> {
                     decoration: boxDecorationDefault(
                       color: blurBlackColor.withOpacity(0.2),
                       borderRadius: radius(18),
-                      boxShadow: defaultBoxShadow(blurRadius: 0, spreadRadius: 0, shadowColor: Colors.black.withAlpha(20)),
+                      boxShadow: defaultBoxShadow(
+                          blurRadius: 0,
+                          spreadRadius: 0,
+                          shadowColor: Colors.black.withAlpha(20)),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Marquee(child: Text(selectArtistsName, style: boldTextStyle())),
-                        Marquee(child: Text('400m monthly listeners', style: secondaryTextStyle(color: textPrimaryColorGlobal))),
+                        Marquee(
+                            child: Text(selectArtistsName,
+                                style: boldTextStyle())),
+                        Marquee(
+                            child: Text('400m monthly listeners',
+                                style: secondaryTextStyle(
+                                    color: textPrimaryColorGlobal))),
                       ],
                     ),
                   ).paddingSymmetric(horizontal: 16),
@@ -106,10 +122,17 @@ class _ArtistsFragmentState extends State<ArtistsFragment> {
                 width: 61,
                 height: 61,
                 decoration: boxDecorationDefault(
-                  color: index == selectArtistIndex ? null : Colors.grey.withAlpha(25),
+                  color: index == selectArtistIndex
+                      ? null
+                      : Colors.grey.withAlpha(25),
                   borderRadius: radius(16),
-                  boxShadow: defaultBoxShadow(blurRadius: 0, shadowColor: Colors.black.withAlpha(20), spreadRadius: 0),
-                  gradient: index == selectArtistIndex ? primaryHomeLinearGradient() : null,
+                  boxShadow: defaultBoxShadow(
+                      blurRadius: 0,
+                      shadowColor: Colors.black.withAlpha(20),
+                      spreadRadius: 0),
+                  gradient: index == selectArtistIndex
+                      ? primaryHomeLinearGradient()
+                      : null,
                 ),
                 child: Stack(
                   alignment: Alignment.center,
@@ -131,8 +154,13 @@ class _ArtistsFragmentState extends State<ArtistsFragment> {
                           borderRadius: radius(16),
                           child: Container(
                             alignment: Alignment.center,
-                            decoration: boxDecorationDefault(color: blurBlackColor.withOpacity(0.4), borderRadius: radius(16)),
-                            child: Text(selectArtistsName, style: secondaryTextStyle(color: textPrimaryColorGlobal), textAlign: TextAlign.center),
+                            decoration: boxDecorationDefault(
+                                color: blurBlackColor.withOpacity(0.4),
+                                borderRadius: radius(16)),
+                            child: Text(selectArtistsName,
+                                style: secondaryTextStyle(
+                                    color: textPrimaryColorGlobal),
+                                textAlign: TextAlign.center),
                           ),
                         ),
                       ),
@@ -163,13 +191,17 @@ class _ArtistsFragmentState extends State<ArtistsFragment> {
           padding: EdgeInsets.symmetric(horizontal: 16),
           itemCount: getFavoriteArtistList.length,
           itemBuilder: (context, index) {
-            DashBoardDataModel favoriteArtistListData = getFavoriteArtistList[index];
+            DashBoardDataModel favoriteArtistListData =
+                getFavoriteArtistList[index];
             return Container(
               width: 130,
               decoration: boxDecorationDefault(
                 color: Colors.grey.withAlpha(25),
                 borderRadius: radius(18),
-                boxShadow: defaultBoxShadow(blurRadius: 0, shadowColor: Colors.black.withAlpha(20), spreadRadius: 0),
+                boxShadow: defaultBoxShadow(
+                    blurRadius: 0,
+                    shadowColor: Colors.black.withAlpha(20),
+                    spreadRadius: 0),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,7 +212,11 @@ class _ArtistsFragmentState extends State<ArtistsFragment> {
                     width: context.width(),
                     fit: BoxFit.cover,
                   ).cornerRadiusWithClipRRect(18).paddingAll(10),
-                  Marquee(child: Text(favoriteArtistListData.podcastsTitle.validate(), style: primaryTextStyle())).paddingAll(10),
+                  Marquee(
+                          child: Text(
+                              favoriteArtistListData.podcastsTitle.validate(),
+                              style: primaryTextStyle()))
+                      .paddingAll(10),
                 ],
               ),
             );
@@ -199,7 +235,8 @@ class _ArtistsFragmentState extends State<ArtistsFragment> {
         actionWidget1: IconButton(
           icon: Image.asset(ic_search, height: 22, width: 22),
           onPressed: () {
-            SearchScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+            SearchScreen()
+                .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
           },
         ),
         actionWidget2: IconButton(
@@ -214,7 +251,7 @@ class _ArtistsFragmentState extends State<ArtistsFragment> {
         children: [
           buildTopWidget(),
           16.height,
-          PopularArtistsComponent(radius: 16),
+          TopArtistsComponent(radius: 16),
           16.height,
           buildFavoritesArtists(),
         ],

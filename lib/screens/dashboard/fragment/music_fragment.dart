@@ -8,7 +8,7 @@ import '../../../utils/images.dart';
 import '../../notification/notification_screen.dart';
 import '../../search/search_screen.dart';
 import '../component/favourite_music_component.dart';
-import '../component/recent_play_music_component.dart';
+import '../component/fan_base_trending_videos_component.dart';
 
 class MusicFragment extends StatefulWidget {
   @override
@@ -46,7 +46,8 @@ class _MusicFragmentState extends State<MusicFragment> {
         actionWidget1: IconButton(
           icon: Image.asset(ic_search, height: 22, width: 22),
           onPressed: () {
-            SearchScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+            SearchScreen()
+                .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
           },
         ),
         actionWidget2: IconButton(
@@ -75,11 +76,18 @@ class _MusicFragmentState extends State<MusicFragment> {
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: boxDecorationDefault(
                     borderRadius: radius(20),
-                    color: index == selectedMusicChipIndex ? Colors.grey.withAlpha(80) : Colors.grey.withAlpha(25),
-                    gradient: index == selectedMusicChipIndex ? primaryHomeLinearGradient() : null,
-                    boxShadow: defaultBoxShadow(blurRadius: 0, shadowColor: Colors.black.withAlpha(20)),
+                    color: index == selectedMusicChipIndex
+                        ? Colors.grey.withAlpha(80)
+                        : Colors.grey.withAlpha(25),
+                    gradient: index == selectedMusicChipIndex
+                        ? primaryHomeLinearGradient()
+                        : null,
+                    boxShadow: defaultBoxShadow(
+                        blurRadius: 0, shadowColor: Colors.black.withAlpha(20)),
                   ),
-                  child: Text(musicChipList[index], style: primaryTextStyle(size: 14, color: textPrimaryColorGlobal)),
+                  child: Text(musicChipList[index],
+                      style: primaryTextStyle(
+                          size: 14, color: textPrimaryColorGlobal)),
                 ),
               );
             },
@@ -92,7 +100,10 @@ class _MusicFragmentState extends State<MusicFragment> {
             decoration: boxDecorationDefault(
               color: Colors.grey.withAlpha(25),
               borderRadius: radius(18),
-              boxShadow: defaultBoxShadow(blurRadius: 0, shadowColor: Colors.black.withAlpha(20), spreadRadius: 0),
+              boxShadow: defaultBoxShadow(
+                  blurRadius: 0,
+                  shadowColor: Colors.black.withAlpha(20),
+                  spreadRadius: 0),
             ),
             child: Stack(
               children: [
@@ -120,7 +131,7 @@ class _MusicFragmentState extends State<MusicFragment> {
           16.height,
           FavouriteMusicComponent(),
           16.height,
-          RecentPlayComponent(),
+          FanBaseTrendingVideosComponent(),
         ],
       ),
     );

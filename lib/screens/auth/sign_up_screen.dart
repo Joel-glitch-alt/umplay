@@ -119,8 +119,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
           },
         ),
         24.height,
-        CommonAppDividerWidget(text: 'or continue with'),
-        16.height,
       ],
     );
   }
@@ -167,8 +165,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             _buildTopWidget(),
             _buildFormWidget(),
             _buildRememberWidget(),
-            _buildSocialWidget(),
-            40.height,
+            10.height,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

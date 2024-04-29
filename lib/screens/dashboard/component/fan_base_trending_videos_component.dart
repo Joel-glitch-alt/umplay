@@ -5,12 +5,14 @@ import '../../../components/cached_image_widget.dart';
 import '../../../components/view_all_label_component.dart';
 import '../model/dashboard_data_model.dart';
 
-class RecentPlayComponent extends StatefulWidget {
+class FanBaseTrendingVideosComponent extends StatefulWidget {
   @override
-  _RecentPlayComponentState createState() => _RecentPlayComponentState();
+  _FanBaseTrendingVideosComponentState createState() =>
+      _FanBaseTrendingVideosComponentState();
 }
 
-class _RecentPlayComponentState extends State<RecentPlayComponent> {
+class _FanBaseTrendingVideosComponentState
+    extends State<FanBaseTrendingVideosComponent> {
   List<DashBoardDataModel> recentPlayedDataList = getRecentPlayedMusicList();
 
   @override
@@ -34,7 +36,7 @@ class _RecentPlayComponentState extends State<RecentPlayComponent> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ViewAllLabel(
-          label: 'Recent Played',
+          label: 'Fan Base Trending Videos',
           onTap: () {
             //
           },
@@ -52,7 +54,10 @@ class _RecentPlayComponentState extends State<RecentPlayComponent> {
               decoration: boxDecorationDefault(
                 color: Colors.grey.withAlpha(25),
                 borderRadius: radius(18),
-                boxShadow: defaultBoxShadow(blurRadius: 0, shadowColor: Colors.black.withAlpha(20), spreadRadius: 0),
+                boxShadow: defaultBoxShadow(
+                    blurRadius: 0,
+                    shadowColor: Colors.black.withAlpha(20),
+                    spreadRadius: 0),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,9 +71,14 @@ class _RecentPlayComponentState extends State<RecentPlayComponent> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Marquee(child: Text(recentPlayedData.trackTitle.validate(), style: primaryTextStyle(color: textPrimaryColorGlobal))),
+                      Marquee(
+                          child: Text(recentPlayedData.trackTitle.validate(),
+                              style: primaryTextStyle(
+                                  color: textPrimaryColorGlobal))),
                       6.height,
-                      Marquee(child: Text(recentPlayedData.trackSubTitle.validate(), style: secondaryTextStyle())),
+                      Marquee(
+                          child: Text(recentPlayedData.trackSubTitle.validate(),
+                              style: secondaryTextStyle())),
                     ],
                   ).paddingAll(10),
                 ],

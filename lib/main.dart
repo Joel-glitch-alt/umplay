@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:nb_utils/nb_utils.dart';
 import 'package:umplay/app_theme.dart';
@@ -35,7 +36,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       // themeMode: appStore.isDarkMode ? ThemeMode.dark : ThemeMode.light,

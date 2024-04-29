@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:umplay/screens/auth/sign_in_screen.dart';
 
 import '../../components/app_scaffold.dart';
 import '../../components/common_app_button.dart';
@@ -26,10 +27,22 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
   }
 
   void init() async {
-    pages.add(WalkThroughModel(title: 'Happy Music!', subTitle: 'Save your favorites to your playlist, and just start singing', img: walk_img_1));
-    pages.add(WalkThroughModel(title: 'Sing alone', subTitle: 'Translate lyrics in different languages and sing along', img: walk_img_2));
-    pages.add(WalkThroughModel(title: 'Search A Song', subTitle: 'Find a songs just by singing it’s rhythm or lyrics', img: walk_img_3));
-    pages.add(WalkThroughModel(title: 'Listen to the best music everyday with Relix now!', img: walk_img_4));
+    pages.add(WalkThroughModel(
+        title: 'Happy Music!',
+        subTitle:
+            'Save your favorites to your playlist, and just start singing',
+        img: walk_img_1));
+    pages.add(WalkThroughModel(
+        title: 'Sing alone',
+        subTitle: 'Translate lyrics in different languages and sing along',
+        img: walk_img_2));
+    pages.add(WalkThroughModel(
+        title: 'Search A Song',
+        subTitle: 'Find a songs just by singing it’s rhythm or lyrics',
+        img: walk_img_3));
+    pages.add(WalkThroughModel(
+        title: 'Listen to the best music everyday with Relix now!',
+        img: walk_img_4));
   }
 
   @override
@@ -57,11 +70,21 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   100.height,
-                  Image.asset(page.img.validate(), height: context.height() * 0.4, width: context.width()),
+                  Image.asset(page.img.validate(),
+                      height: context.height() * 0.4, width: context.width()),
                   60.height,
-                  Text(page.title.validate(), style: boldTextStyle(size: 24, color: textPrimaryColorGlobal), textAlign: TextAlign.center).paddingSymmetric(horizontal: 60),
+                  Text(page.title.validate(),
+                          style: boldTextStyle(
+                              size: 24, color: textPrimaryColorGlobal),
+                          textAlign: TextAlign.center)
+                      .paddingSymmetric(horizontal: 60),
                   16.height,
-                  if (currentIndex != 4) Text(page.subTitle.validate(), style: secondaryTextStyle(), textAlign: TextAlign.center, maxLines: 2).paddingSymmetric(horizontal: 60),
+                  if (currentIndex != 4)
+                    Text(page.subTitle.validate(),
+                            style: secondaryTextStyle(),
+                            textAlign: TextAlign.center,
+                            maxLines: 2)
+                        .paddingSymmetric(horizontal: 60),
                 ],
               );
             },
@@ -92,15 +115,26 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
                 ? Container(
                     width: context.width(),
                     padding: EdgeInsets.all(20),
-                    decoration: boxDecorationDefault(borderRadius: radius(0), color: lightPurple, boxShadow: defaultBoxShadow(spreadRadius: 0, blurRadius: 0)),
+                    decoration: boxDecorationDefault(
+                        borderRadius: radius(0),
+                        color: lightPurple,
+                        boxShadow:
+                            defaultBoxShadow(spreadRadius: 0, blurRadius: 0)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Skip', style: secondaryTextStyle(size: 16)).onTap(() {
-                          RegisterScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+                        Text('Skip', style: secondaryTextStyle(size: 16))
+                            .onTap(() {
+                          RegisterScreen().launch(context,
+                              pageRouteAnimation: PageRouteAnimation.Slide);
                         }),
-                        Text('Next', style: primaryTextStyle(color: textPrimaryColorGlobal)).onTap(() {
-                          pageController.nextPage(duration: 500.milliseconds, curve: Curves.linearToEaseOut);
+                        Text('Next',
+                                style: primaryTextStyle(
+                                    color: textPrimaryColorGlobal))
+                            .onTap(() {
+                          pageController.nextPage(
+                              duration: 500.milliseconds,
+                              curve: Curves.linearToEaseOut);
                         }),
                       ],
                     ),
@@ -108,7 +142,8 @@ class _WalkThroughScreenState extends State<WalkThroughScreen> {
                 : CommonAppButton(
                     btnText: 'Get Started',
                     onPressed: () {
-                      RegisterScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+                      SignInScreen().launch(context,
+                          pageRouteAnimation: PageRouteAnimation.Slide);
                     },
                   ).paddingSymmetric(horizontal: 16),
           ),

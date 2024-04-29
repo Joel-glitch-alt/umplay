@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 import '../../../components/cached_image_widget.dart';
@@ -7,16 +8,16 @@ import '../../library/artist_detail_screen.dart';
 import '../../library/artists_followed_screen.dart';
 import '../../library/model/artists_followed_list_model.dart';
 
-class PopularArtistsComponent extends StatefulWidget {
+class TopArtistsComponent extends StatefulWidget {
   final double? radius;
 
-  PopularArtistsComponent({this.radius});
+  TopArtistsComponent({this.radius});
 
   @override
-  _PopularArtistsComponentState createState() => _PopularArtistsComponentState();
+  _TopArtistsComponentState createState() => _TopArtistsComponentState();
 }
 
-class _PopularArtistsComponentState extends State<PopularArtistsComponent> {
+class _TopArtistsComponentState extends State<TopArtistsComponent> {
   List<ArtistsFollowedListModel> artistsFollowedList = getArtistsFollowedList();
 
   @override
@@ -40,9 +41,14 @@ class _PopularArtistsComponentState extends State<PopularArtistsComponent> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ViewAllLabel(
-          label: 'Popular Artists',
+          label: 'Top Artists',
           onTap: () {
-            ArtistsFollowedScreen(appBarTitle: 'Popular Artists', hideActionWidget: false).launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+            Get.to(
+                () => ArtistsFollowedScreen(
+                      appBarTitle: 'Artists',
+                      hideActionWidget: false,
+                    ),
+                transition: Transition.circularReveal);
           },
         ).paddingSymmetric(horizontal: 16),
         12.height,
@@ -52,10 +58,13 @@ class _PopularArtistsComponentState extends State<PopularArtistsComponent> {
           runSpacing: 0,
           padding: EdgeInsets.symmetric(horizontal: 16),
           itemBuilder: (context, index) {
-            ArtistsFollowedListModel artistsFollowedListData = artistsFollowedList[index];
+            ArtistsFollowedListModel artistsFollowedListData =
+                artistsFollowedList[index];
             return GestureDetector(
               onTap: () {
-                ArtistDetailScreen(artistData: artistsFollowedListData).launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+                ArtistDetailScreen(artistData: artistsFollowedListData).launch(
+                    context,
+                    pageRouteAnimation: PageRouteAnimation.Slide);
               },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,8 +80,10 @@ class _PopularArtistsComponentState extends State<PopularArtistsComponent> {
                     width: 78,
                     child: Marquee(
                       child: Text(
-                        artistsFollowedListData.artistName.capitalizeFirstLetter(),
-                        style: primaryTextStyle(size: 14, color: textPrimaryColorGlobal),
+                        artistsFollowedListData.artistName
+                            .capitalizeFirstLetter(),
+                        style: primaryTextStyle(
+                            size: 14, color: textPrimaryColorGlobal),
                         textAlign: TextAlign.start,
                         overflow: TextOverflow.ellipsis,
                       ),

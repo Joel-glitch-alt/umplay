@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:umplay/screens/dashboard/dashboard_screen.dart';
 import 'package:umplay/utils/string_extensions.dart';
 import 'package:nb_utils/nb_utils.dart';
 
@@ -93,45 +94,14 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
-  Widget _buildRememberWidget() {
+  Widget _buildLoginWidget() {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 16,
-              width: 16,
-              child: Checkbox(
-                activeColor: Colors.grey.withAlpha(40),
-                checkColor: Colors.grey,
-                value: isRemember,
-                visualDensity: VisualDensity.compact,
-                shape: RoundedRectangleBorder(borderRadius: radius(4)),
-                onChanged: (value) {
-                  isRemember = value.validate();
-                  setState(() {});
-                },
-              ),
-            ),
-            6.width,
-            TextButton(
-              onPressed: () {
-                isRemember = !isRemember;
-                setState(() {});
-              },
-              child: Text('Remember me',
-                  style: primaryTextStyle(
-                      color: isRemember ? textPrimaryColorGlobal : null)),
-            ),
-          ],
-        ),
-        20.height,
         CommonAppButton(
           btnText: 'Sign in',
           onPressed: () {
             hideKeyboard(context);
-            ProfileScreen()
+            DashBoardScreen()
                 .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
           },
         ),
@@ -145,8 +115,6 @@ class _SignInScreenState extends State<SignInScreen> {
           child: GradientTextWidget(text: 'Forgot the password?'),
         ),
         24.height,
-        CommonAppDividerWidget(text: 'or continue with'),
-        16.height,
       ],
     );
   }
@@ -193,8 +161,7 @@ class _SignInScreenState extends State<SignInScreen> {
           children: [
             _buildTopWidget(),
             _buildFormWidget(),
-            _buildRememberWidget(),
-            _buildSocialWidget(),
+            _buildLoginWidget(),
             16.height,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

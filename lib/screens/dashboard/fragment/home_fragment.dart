@@ -7,9 +7,9 @@ import '../../../utils/images.dart';
 import '../../notification/notification_screen.dart';
 import '../../search/search_screen.dart';
 import '../component/featured_list_component.dart';
-import '../component/popular_artists_component.dart';
-import '../component/recent_play_music_component.dart';
-import '../component/slider_location_component.dart';
+import '../component/top_artists_component.dart';
+import '../component/fan_base_trending_videos_component.dart';
+import '../component/my_artist.dart';
 
 class HomeFragment extends StatefulWidget {
   @override
@@ -69,13 +69,11 @@ class _HomeFragmentState extends State<HomeFragment> {
         fadeInConfiguration: FadeInConfiguration(duration: 2.seconds),
         children: [
           6.height,
-          SliderLocationComponent(),
-          8.height,
-          FeaturedListComponent(),
+          MyArtistComponent(),
           16.height,
-          PopularArtistsComponent(),
+          TopArtistsComponent(),
           16.height,
-          RecentPlayComponent(),
+          FanBaseTrendingVideosComponent(),
           16.height,
         ],
       ),
