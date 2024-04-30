@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:umplay/utils/constant.dart';
+import 'package:umplay/core/utils/constant.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../utils/colors.dart';
+import 'core/utils/colors.dart';
 
 class AppTheme {
   //
