@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../../../core/components/app_scaffold.dart';
-import '../../../core/components/blur_dialog_widget.dart';
-import '../../../core/components/common_app_button.dart';
-import '../../../core/components/gradient_text_widget.dart';
-import '../../../core/components/icon_background_widget.dart';
-import '../../../core/utils/colors.dart';
-import '../../../core/utils/common.dart';
-import '../../../core/utils/images.dart';
-import '../dashboard/dashboard_screen.dart';
+import '../../../../core/components/app_scaffold.dart';
+import '../../../../core/components/blur_dialog_widget.dart';
+import '../../../../core/components/common_app_button.dart';
+import '../../../../core/components/gradient_text_widget.dart';
+import '../../../../core/components/icon_background_widget.dart';
+import '../../../../core/utils/colors.dart';
+import '../../../../core/utils/common.dart';
+import '../../../../core/utils/images.dart';
+import '../../../screens/dashboard/dashboard_screen.dart';
 
 class OTPScreen extends StatefulWidget {
   @override

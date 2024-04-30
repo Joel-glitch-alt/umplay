@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:nb_utils/nb_utils.dart';
 import 'package:umplay/app_theme.dart';
-import 'package:umplay/features/screens/splash_screen.dart';
+import 'package:umplay/features/auth/presentation/screens/splash_screen.dart';
 import 'package:umplay/core/store/app_store.dart';
 
 // APP STORE

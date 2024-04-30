@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../../../core/components/app_scaffold.dart';
-import '../../../core/components/common_app_button.dart';
-import '../../../core/components/icon_background_widget.dart';
-import '../../../core/components/transparent_container_widget.dart';
-import '../../../core/utils/common.dart';
-import '../../../core/utils/images.dart';
+import '../../../../core/components/app_scaffold.dart';
+import '../../../../core/components/common_app_button.dart';
+import '../../../../core/components/icon_background_widget.dart';
+import '../../../../core/components/transparent_container_widget.dart';
+import '../../../../core/utils/common.dart';
+import '../../../../core/utils/images.dart';
 import 'create_new_password_screen.dart';
 import 'otp_screen.dart';
 

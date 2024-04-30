@@ -1,29 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:umplay/features/screens/dashboard/dashboard_screen.dart';
 import 'package:umplay/core/utils/string_extensions.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../../../core/components/app_scaffold.dart';
-import '../../../core/components/common_app_button.dart';
-import '../../../core/components/common_app_divider.dart';
-import '../../../core/components/gradient_text_widget.dart';
-import '../../../core/utils/common.dart';
-import '../../../core/utils/images.dart';
-import '../account_setup/profile_screen.dart';
-import 'sign_in_screen.dart';
+import '../../../../core/components/app_scaffold.dart';
+import '../../../../core/components/common_app_button.dart';
+import '../../../../core/components/common_app_divider.dart';
+import '../../../../core/components/gradient_text_widget.dart';
+import '../../../../core/utils/common.dart';
+import '../../../../core/utils/images.dart';
+import '../../../screens/account_setup/profile_screen.dart';
+import 'forgot_password_screen.dart';
+import 'sign_up_screen.dart';
 
-class SignUpScreen extends StatefulWidget {
+class SignInScreen extends StatefulWidget {
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  _SignInScreenState createState() => _SignInScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
-  TextEditingController nameCont = TextEditingController();
+class _SignInScreenState extends State<SignInScreen> {
   TextEditingController emailCont = TextEditingController();
   TextEditingController passwordCont = TextEditingController();
 
-  FocusNode nameFocus = FocusNode();
   FocusNode emailFocus = FocusNode();
   FocusNode passwordFocus = FocusNode();
+
+  bool isRemember = true;
 
   @override
   void initState() {
@@ -46,7 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       children: [
         Image.asset(app_logo, height: 80, width: 80),
         30.height,
-        Text('Create Your Account',
+        Text('Login to Your Account',
             style: boldTextStyle(size: 24, color: textPrimaryColorGlobal)),
         25.height,
       ],
@@ -56,20 +58,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget _buildFormWidget() {
     return Column(
       children: [
-        AppTextField(
-          controller: nameCont,
-          focus: nameFocus,
-          nextFocus: emailFocus,
-          textFieldType: TextFieldType.NAME,
-          textInputAction: TextInputAction.next,
-          textStyle: primaryTextStyle(color: Colors.white),
-          decoration: inputDecoration(context,
-              label: 'Name',
-              prefixIcon: ic_mail
-                  .iconImage(size: 10, color: Colors.white)
-                  .paddingAll(13)),
-        ),
-        22.height,
         AppTextField(
           controller: emailCont,
           focus: emailFocus,
@@ -106,17 +94,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _buildRememberWidget() {
+  Widget _buildLoginWidget() {
     return Column(
       children: [
-        20.height,
         CommonAppButton(
-          btnText: 'Sign up',
+          btnText: 'Sign in',
           onPressed: () {
             hideKeyboard(context);
-            ProfileScreen()
+            DashBoardScreen()
                 .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
           },
+        ),
+        20.height,
+        TextButton(
+          onPressed: () {
+            hideKeyboard(context);
+            ForgotPasswordScreen()
+                .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+          },
+          child: GradientTextWidget(text: 'Forgot the password?'),
         ),
         24.height,
       ],
@@ -150,6 +146,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ],
     );
   }
+
   // end region
 
   @override
@@ -164,20 +161,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
           children: [
             _buildTopWidget(),
             _buildFormWidget(),
-            _buildRememberWidget(),
-            10.height,
+            _buildLoginWidget(),
+            16.height,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Already have an account?',
+                Text('Don’t have an account?',
                     style: primaryTextStyle(color: textPrimaryColorGlobal)),
                 TextButton(
                   onPressed: () {
                     hideKeyboard(context);
-                    SignInScreen().launch(context,
+                    SignUpScreen().launch(context,
                         pageRouteAnimation: PageRouteAnimation.Slide);
                   },
-                  child: GradientTextWidget(text: 'Sign in'),
+                  child: GradientTextWidget(text: 'Sign up'),
                 ),
               ],
             ),

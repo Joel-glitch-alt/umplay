@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:umplay/features/screens/auth/sign_in_screen.dart';
+import 'package:umplay/features/auth/presentation/screens/sign_in_screen.dart';
 
 import '../../../core/components/app_scaffold.dart';
 import '../../../core/components/common_app_button.dart';
 import '../../../core/utils/colors.dart';
 import '../../../core/utils/images.dart';
-import '../auth/register_screen.dart';
+import '../../auth/presentation/screens/register_screen.dart';
 import 'model/walk_through_model.dart';
 
 class WalkThroughScreen extends StatefulWidget {

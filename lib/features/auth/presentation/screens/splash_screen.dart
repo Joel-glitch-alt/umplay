@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../../core/components/app_scaffold.dart';
-import '../../core/utils/colors.dart';
-import '../../core/utils/constant.dart';
-import '../../core/utils/images.dart';
-import 'walk_through/walk_through_screen.dart';
+import '../../../../core/components/app_scaffold.dart';
+import '../../../../core/utils/colors.dart';
+import '../../../../core/utils/constant.dart';
+import '../../../../core/utils/images.dart';
+import '../../../screens/walk_through/walk_through_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:umplay/core/common/routes.dart';
-import 'package:umplay/features/screens/splash_screen.dart';
+import 'package:umplay/features/auth/presentation/screens/splash_screen.dart';
 
 class AppPages {
   static const initial = AppRoutes.initial;

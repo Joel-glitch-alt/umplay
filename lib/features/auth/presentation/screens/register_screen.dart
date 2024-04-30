@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../../../core/components/app_scaffold.dart';
-import '../../../core/components/common_app_button.dart';
-import '../../../core/components/gradient_text_widget.dart';
-import '../../../core/components/transparent_container_widget.dart';
-import '../../../core/utils/common.dart';
-import '../../../core/utils/images.dart';
+import '../../../../core/components/app_scaffold.dart';
+import '../../../../core/components/common_app_button.dart';
+import '../../../../core/components/gradient_text_widget.dart';
+import '../../../../core/components/transparent_container_widget.dart';
+import '../../../../core/utils/common.dart';
+import '../../../../core/utils/images.dart';
 import 'sign_in_screen.dart';
 import 'sign_up_screen.dart';
 
