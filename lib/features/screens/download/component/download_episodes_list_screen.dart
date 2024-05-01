@@ -6,6 +6,8 @@ import '../model/download_list_model.dart';
 import 'download_item_widget.dart';
 
 class DownloadEpisodesListScreen extends StatefulWidget {
+  const DownloadEpisodesListScreen({super.key});
+
   @override
   _DownloadEpisodesListScreenState createState() =>
       _DownloadEpisodesListScreenState();
@@ -38,10 +40,10 @@ class _DownloadEpisodesListScreenState
         ListView.separated(
           itemCount: episodeListData.length,
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          padding: EdgeInsets.all(16),
+          physics: const NeverScrollableScrollPhysics(),
+          padding: const EdgeInsets.all(16),
           separatorBuilder: (context, index) =>
-              CommonAppDividerWidget(height: 30),
+              const CommonAppDividerWidget(height: 30),
           itemBuilder: (ctx, index) {
             DownloadSongListModel data = episodeListData[index];
             return AnimatedItemWidget(child: DownloadItemWidget(modObj: data));

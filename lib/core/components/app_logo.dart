@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../utils/images.dart';
+import '../constants/images.dart';
 
 class AppLogo extends StatelessWidget {
   final double? size;
 
-  AppLogo({this.size});
+  const AppLogo({super.key, this.size});
 
   @override
   Widget build(BuildContext context) {

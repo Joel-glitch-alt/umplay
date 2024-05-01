@@ -3,14 +3,14 @@ import 'package:nb_utils/nb_utils.dart';
 
 import '../../../core/components/app_scaffold.dart';
 import '../../../core/utils/common.dart';
-import '../../../core/utils/images.dart';
+import '../../../core/constants/images.dart';
 import 'component/artists_followed_list_screen.dart';
 
 class ArtistsFollowedScreen extends StatefulWidget {
   final String? appBarTitle;
   final bool hideActionWidget;
 
-  ArtistsFollowedScreen({this.appBarTitle, this.hideActionWidget = true});
+  const ArtistsFollowedScreen({super.key, this.appBarTitle, this.hideActionWidget = true});
 
   @override
   _ArtistsFollowedScreenState createState() => _ArtistsFollowedScreenState();
@@ -46,10 +46,10 @@ class _ArtistsFollowedScreenState extends State<ArtistsFollowedScreen> {
                   //
                 },
               )
-            : Offstage(),
+            : const Offstage(),
       ),
       body: AnimatedScrollView(
-        padding: EdgeInsets.only(bottom: 30),
+        padding: const EdgeInsets.only(bottom: 30),
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -72,7 +72,7 @@ class _ArtistsFollowedScreenState extends State<ArtistsFollowedScreen> {
               ),
             ],
           ),
-          ArtistsFollowedListScreen(),
+          const ArtistsFollowedListScreen(),
         ],
       ),
     );

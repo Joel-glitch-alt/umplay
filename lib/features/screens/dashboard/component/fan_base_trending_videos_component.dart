@@ -6,6 +6,8 @@ import '../../../../core/components/view_all_label_component.dart';
 import '../model/dashboard_data_model.dart';
 
 class FanBaseTrendingVideosComponent extends StatefulWidget {
+  const FanBaseTrendingVideosComponent({super.key});
+
   @override
   _FanBaseTrendingVideosComponentState createState() =>
       _FanBaseTrendingVideosComponentState();
@@ -45,7 +47,7 @@ class _FanBaseTrendingVideosComponentState
         HorizontalList(
           spacing: 16,
           runSpacing: 0,
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           itemCount: recentPlayedDataList.length,
           itemBuilder: (context, index) {
             DashBoardDataModel recentPlayedData = recentPlayedDataList[index];

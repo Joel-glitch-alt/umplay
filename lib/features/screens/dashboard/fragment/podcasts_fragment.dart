@@ -6,12 +6,14 @@ import '../../../../core/components/app_scaffold.dart';
 import '../../../../core/components/cached_image_widget.dart';
 import '../../../../core/components/view_all_label_component.dart';
 import '../../../../core/utils/common.dart';
-import '../../../../core/utils/images.dart';
+import '../../../../core/constants/images.dart';
 import '../../notification/notification_screen.dart';
 import '../../search/search_screen.dart';
 import '../model/dashboard_data_model.dart';
 
 class PodcastsFragment extends StatefulWidget {
+  const PodcastsFragment({super.key});
+
   @override
   _PodcastsFragmentState createState() => _PodcastsFragmentState();
 }
@@ -39,7 +41,7 @@ class _PodcastsFragmentState extends State<PodcastsFragment> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ViewAllLabel(label: 'Popular Podcasts', isShowAll: false),
+        const ViewAllLabel(label: 'Popular Podcasts', isShowAll: false),
         16.height,
         AnimatedWrap(
           spacing: 16,
@@ -51,7 +53,7 @@ class _PodcastsFragmentState extends State<PodcastsFragment> {
                 popularPodcastsList[index];
             return Container(
               width: context.width() / 2 - 24,
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               decoration: boxDecorationDefault(
                 color: Colors.grey.withAlpha(25),
                 borderRadius: radius(18),
@@ -82,9 +84,8 @@ class _PodcastsFragmentState extends State<PodcastsFragment> {
                       maxLines: 2,
                       list: [
                         TextSpan(
-                          text: popularPodCastsDataList.podcastsTitle
-                                  .splitBefore(':') +
-                              ' : ',
+                          text: '${popularPodCastsDataList.podcastsTitle
+                                  .splitBefore(':')} : ',
                           style: primaryTextStyle(size: 12),
                         ),
                         TextSpan(
@@ -118,7 +119,7 @@ class _PodcastsFragmentState extends State<PodcastsFragment> {
         HorizontalList(
           spacing: 16,
           runSpacing: 0,
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           itemCount: topPodcastsList.length,
           itemBuilder: (context, index) {
             DashBoardDataModel topPodcastsListData = topPodcastsList[index];
@@ -164,23 +165,23 @@ class _PodcastsFragmentState extends State<PodcastsFragment> {
         actionWidget1: IconButton(
           icon: Image.asset(ic_search, height: 22, width: 22),
           onPressed: () {
-            SearchScreen()
+            const SearchScreen()
                 .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
           },
         ),
         actionWidget2: IconButton(
           icon: Image.asset(ic_notification, height: 22, width: 22),
           onPressed: () {
-            NotificationScreen().launch(context);
+            const NotificationScreen().launch(context);
           },
         ),
       ),
       body: AnimatedScrollView(
-        padding: EdgeInsets.only(bottom: 30),
+        padding: const EdgeInsets.only(bottom: 30),
         children: [
           buildPopularPodcastWidget(),
           16.height,
-          TopArtistsComponent(),
+          const TopArtistsComponent(),
           16.height,
           buildTopPodcastWidget(),
         ],

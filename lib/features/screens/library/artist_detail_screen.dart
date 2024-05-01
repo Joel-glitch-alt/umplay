@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:umplay/core/constants/sizes.dart';
 
 import '../../../core/components/app_scaffold.dart';
 import '../../../core/components/cached_image_widget.dart';
 import '../../../core/components/common_app_button.dart';
 import '../../../core/components/gradient_icon_widget.dart';
 import '../../../core/components/icon_background_widget.dart';
-import '../../../core/components/view_all_label_component.dart';
 import '../../../core/utils/common.dart';
-import '../../../core/utils/constant.dart';
-import '../../../core/utils/images.dart';
-import '../search/component/songs_search_component.dart';
+import '../../../core/constants/constant.dart';
+import '../../../core/constants/images.dart';
 import 'model/artists_followed_list_model.dart';
 
 class ArtistDetailScreen extends StatefulWidget {
   final ArtistsFollowedListModel? artistData;
 
-  ArtistDetailScreen({this.artistData});
+  const ArtistDetailScreen({super.key, this.artistData});
 
   @override
   _ArtistDetailScreenState createState() => _ArtistDetailScreenState();
@@ -69,7 +68,7 @@ class _ArtistDetailScreenState extends State<ArtistDetailScreen> {
                         ),
                       ).expand(),
                       16.width,
-                      Icon(Icons.more_vert, size: 20).onTap(() {
+                      const Icon(Icons.more_vert, size: 20).onTap(() {
                         //
                       }, borderRadius: radius(4.00)),
                     ],
@@ -93,8 +92,8 @@ class _ArtistDetailScreenState extends State<ArtistDetailScreen> {
                         },
                         splashColor: Colors.transparent,
                         child: widget.artistData!.isLike.validate()
-                            ? GradientIconWidget(icon: Icons.favorite)
-                            : Icon(Icons.favorite,
+                            ? const GradientIconWidget(icon: Icons.favorite)
+                            : const Icon(Icons.favorite,
                                 size: 24, color: Colors.grey),
                       ),
                     ],
@@ -145,9 +144,9 @@ class _ArtistDetailScreenState extends State<ArtistDetailScreen> {
                         ),
                       ).expand(),
                       16.width,
-                      Icon(Icons.more_vert, size: 20).onTap(() {
+                      const Icon(Icons.more_vert, size: 20).onTap(() {
                         //
-                      }, borderRadius: radius(DEFAULT_RADIUS)),
+                      }, borderRadius: radius(USizes.defaultRadius)),
                     ],
                   ),
                   10.height,
@@ -169,8 +168,8 @@ class _ArtistDetailScreenState extends State<ArtistDetailScreen> {
                         },
                         splashColor: Colors.transparent,
                         child: widget.artistData!.isLike.validate()
-                            ? GradientIconWidget(icon: Icons.favorite)
-                            : Icon(Icons.favorite,
+                            ? const GradientIconWidget(icon: Icons.favorite)
+                            : const Icon(Icons.favorite,
                                 size: 24, color: Colors.grey),
                       ),
                     ],
@@ -192,7 +191,7 @@ class _ArtistDetailScreenState extends State<ArtistDetailScreen> {
               ),
               12.width,
               IconButton(
-                icon: IconBackgroundWidget(
+                icon: const IconBackgroundWidget(
                     icon: ic_add,
                     color: Colors.white,
                     boxHeight: 22,

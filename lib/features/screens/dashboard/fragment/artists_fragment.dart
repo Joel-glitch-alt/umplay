@@ -4,15 +4,17 @@ import 'package:nb_utils/nb_utils.dart';
 import '../../../../core/components/app_scaffold.dart';
 import '../../../../core/components/cached_image_widget.dart';
 import '../../../../core/components/view_all_label_component.dart';
-import '../../../../core/utils/colors.dart';
+import '../../../../core/constants/colors.dart';
 import '../../../../core/utils/common.dart';
-import '../../../../core/utils/images.dart';
+import '../../../../core/constants/images.dart';
 import '../../notification/notification_screen.dart';
 import '../../search/search_screen.dart';
 import '../component/top_artists_component.dart';
 import '../model/dashboard_data_model.dart';
 
 class ArtistsFragment extends StatefulWidget {
+  const ArtistsFragment({super.key});
+
   @override
   _ArtistsFragmentState createState() => _ArtistsFragmentState();
 }
@@ -53,7 +55,7 @@ class _ArtistsFragmentState extends State<ArtistsFragment> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 16),
+          margin: const EdgeInsets.symmetric(horizontal: 16),
           decoration: boxDecorationDefault(
             color: Colors.grey.withAlpha(25),
             borderRadius: radius(18),
@@ -78,7 +80,7 @@ class _ArtistsFragmentState extends State<ArtistsFragment> {
                   blur: 1,
                   borderRadius: radius(18),
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                     decoration: boxDecorationDefault(
                       color: blurBlackColor.withOpacity(0.2),
                       borderRadius: radius(18),
@@ -117,7 +119,7 @@ class _ArtistsFragmentState extends State<ArtistsFragment> {
                 setState(() {});
               },
               child: Container(
-                padding: EdgeInsets.all(3),
+                padding: const EdgeInsets.all(3),
                 alignment: Alignment.center,
                 width: 61,
                 height: 61,
@@ -188,7 +190,7 @@ class _ArtistsFragmentState extends State<ArtistsFragment> {
         HorizontalList(
           spacing: 16,
           runSpacing: 0,
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           itemCount: getFavoriteArtistList.length,
           itemBuilder: (context, index) {
             DashBoardDataModel favoriteArtistListData =
@@ -235,23 +237,23 @@ class _ArtistsFragmentState extends State<ArtistsFragment> {
         actionWidget1: IconButton(
           icon: Image.asset(ic_search, height: 22, width: 22),
           onPressed: () {
-            SearchScreen()
+            const SearchScreen()
                 .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
           },
         ),
         actionWidget2: IconButton(
           icon: Image.asset(ic_notification, height: 22, width: 22),
           onPressed: () {
-            NotificationScreen().launch(context);
+            const NotificationScreen().launch(context);
           },
         ),
       ),
       body: AnimatedScrollView(
-        padding: EdgeInsets.only(bottom: 30),
+        padding: const EdgeInsets.only(bottom: 30),
         children: [
           buildTopWidget(),
           16.height,
-          TopArtistsComponent(radius: 16),
+          const TopArtistsComponent(radius: 16),
           16.height,
           buildFavoritesArtists(),
         ],

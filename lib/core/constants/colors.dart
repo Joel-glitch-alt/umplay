@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-const primaryColor = Color(0xFFFF00E5);
-const secondaryColor = Color(0xFF5200FF);
+const primaryColor = Color(0xFF201631);
+const secondaryColor = Color(0xFF645D6E);
 
 const cardColor = Color(0xFFFFFFFF);
 const lightPurple = Color(0xFF201631);

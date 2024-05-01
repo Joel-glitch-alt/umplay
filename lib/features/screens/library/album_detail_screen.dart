@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:umplay/core/constants/sizes.dart';
 
 import '../../../core/components/app_scaffold.dart';
 import '../../../core/components/cached_image_widget.dart';
 import '../../../core/components/gradient_icon_widget.dart';
 import '../../../core/components/icon_background_widget.dart';
 import '../../../core/utils/common.dart';
-import '../../../core/utils/constant.dart';
-import '../../../core/utils/images.dart';
+import '../../../core/constants/constant.dart';
+import '../../../core/constants/images.dart';
 import '../search/component/songs_search_component.dart';
 import '../search/model/search_data_model.dart';
 
 class AlbumDetailScreen extends StatefulWidget {
   final SearchDataModel? albumListData;
 
-  AlbumDetailScreen({this.albumListData});
+  const AlbumDetailScreen({super.key, this.albumListData});
 
   @override
   _AlbumDetailScreenState createState() => _AlbumDetailScreenState();
@@ -62,15 +63,15 @@ class _AlbumDetailScreenState extends State<AlbumDetailScreen> {
                           child: Text(
                               widget.albumListData!.titleName.validate(),
                               style: boldTextStyle())),
-                      Icon(Icons.more_vert, size: 20).onTap(() {
+                      const Icon(Icons.more_vert, size: 20).onTap(() {
                         //
-                      }, borderRadius: radius(DEFAULT_RADIUS)),
+                      }, borderRadius: radius(USizes.defaultRadius)),
                     ],
                   ),
                   10.height,
                   Row(
                     children: [
-                      CachedImageWidget(
+                      const CachedImageWidget(
                         url: ariana_grande_artists,
                         height: 35,
                         fit: BoxFit.cover,
@@ -102,8 +103,8 @@ class _AlbumDetailScreenState extends State<AlbumDetailScreen> {
                         },
                         splashColor: Colors.transparent,
                         child: widget.albumListData!.isLike.validate()
-                            ? GradientIconWidget(icon: Icons.favorite)
-                            : Icon(Icons.favorite,
+                            ? const GradientIconWidget(icon: Icons.favorite)
+                            : const Icon(Icons.favorite,
                                 size: 24, color: Colors.grey),
                       ),
                     ],
@@ -130,7 +131,7 @@ class _AlbumDetailScreenState extends State<AlbumDetailScreen> {
               ),
               12.width,
               IconButton(
-                icon: IconBackgroundWidget(
+                icon: const IconBackgroundWidget(
                     icon: ic_add,
                     color: Colors.white,
                     boxHeight: 22,

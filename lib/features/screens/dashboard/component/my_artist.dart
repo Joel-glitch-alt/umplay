@@ -3,9 +3,11 @@ import 'package:nb_utils/nb_utils.dart';
 import 'package:umplay/core/components/gradient_icon_widget.dart';
 
 import '../../../../core/components/cached_image_widget.dart';
-import '../../../../core/utils/images.dart';
+import '../../../../core/constants/images.dart';
 
 class MyArtistComponent extends StatefulWidget {
+  const MyArtistComponent({super.key});
+
   @override
   _MyArtistComponentState createState() => _MyArtistComponentState();
 }
@@ -67,7 +69,7 @@ class _MyArtistComponentState extends State<MyArtistComponent> {
                     ),
                   ).expand(),
                   16.width,
-                  Icon(Icons.more_vert, size: 20).onTap(() {
+                  const Icon(Icons.more_vert, size: 20).onTap(() {
                     //
                   }, borderRadius: radius(16.00)),
                 ],
@@ -87,8 +89,8 @@ class _MyArtistComponentState extends State<MyArtistComponent> {
                     },
                     splashColor: Colors.transparent,
                     child: isFollow
-                        ? GradientIconWidget(icon: Icons.favorite)
-                        : Icon(Icons.favorite, size: 24, color: Colors.grey),
+                        ? const GradientIconWidget(icon: Icons.favorite)
+                        : const Icon(Icons.favorite, size: 24, color: Colors.grey),
                   ),
                 ],
               ),

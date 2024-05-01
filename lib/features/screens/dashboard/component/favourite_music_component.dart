@@ -6,6 +6,8 @@ import '../../../../core/components/view_all_label_component.dart';
 import '../model/dashboard_data_model.dart';
 
 class FavouriteMusicComponent extends StatefulWidget {
+  const FavouriteMusicComponent({super.key});
+
   @override
   _FavouriteMusicComponentState createState() =>
       _FavouriteMusicComponentState();
@@ -44,7 +46,7 @@ class _FavouriteMusicComponentState extends State<FavouriteMusicComponent> {
         HorizontalList(
           spacing: 16,
           runSpacing: 0,
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           itemCount: favouriteMusicDataList.length,
           itemBuilder: (context, index) {
             DashBoardDataModel favouriteMusicData =

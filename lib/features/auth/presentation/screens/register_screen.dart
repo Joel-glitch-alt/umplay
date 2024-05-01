@@ -6,11 +6,13 @@ import '../../../../core/components/common_app_button.dart';
 import '../../../../core/components/gradient_text_widget.dart';
 import '../../../../core/components/transparent_container_widget.dart';
 import '../../../../core/utils/common.dart';
-import '../../../../core/utils/images.dart';
-import 'sign_in_screen.dart';
+import '../../../../core/constants/images.dart';
+import 'sign_in/sign_in_screen.dart';
 import 'sign_up_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
 }
@@ -36,7 +38,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return AppScaffold(
       appBar: commonAppBarWidget(context, title: ''),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -56,18 +58,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
             30.height,
             Row(
               children: [
-                Divider(color: dividerDarkColor, thickness: 0).expand(),
+                const Divider(color: dividerDarkColor, thickness: 0).expand(),
                 8.width,
                 Text('or',
                     style: boldTextStyle(color: textSecondaryColorGlobal)),
                 8.width,
-                Divider(color: dividerDarkColor, thickness: 0).expand(),
+                const Divider(color: dividerDarkColor, thickness: 0).expand(),
               ],
             ),
             30.height,
             CommonAppButton(
               btnText: 'Sign in with password',
-              onPressed: () => SignInScreen().launch(context,
+              onPressed: () => const SignInScreen().launch(context,
                   pageRouteAnimation: PageRouteAnimation.Slide),
             ),
             80.height,
@@ -79,10 +81,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 TextButton(
                   onPressed: () {
                     hideKeyboard(context);
-                    SignUpScreen().launch(context,
+                    const SignUpScreen().launch(context,
                         pageRouteAnimation: PageRouteAnimation.Slide);
                   },
-                  child: GradientTextWidget(text: 'Sign up'),
+                  child: const GradientTextWidget(text: 'Sign up'),
                 ),
               ],
             ),

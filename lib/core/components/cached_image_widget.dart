@@ -14,7 +14,7 @@ class CachedImageWidget extends StatelessWidget {
   final bool circle;
   final double? radius;
 
-  CachedImageWidget({
+  const CachedImageWidget({super.key, 
     required this.url,
     required this.height,
     this.width,

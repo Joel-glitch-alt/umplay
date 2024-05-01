@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:umplay/core/components/scaffold_background.dart';
 
-import '../utils/colors.dart';
+import '../constants/colors.dart';
 
 class AppScaffold extends StatelessWidget {
   final bool resizeToAvoidBottomInset;
@@ -9,8 +9,9 @@ class AppScaffold extends StatelessWidget {
   final Widget? bottomNavigationBar;
   final Widget body;
 
-  AppScaffold(
-      {required this.body,
+  const AppScaffold(
+      {super.key,
+      required this.body,
       this.resizeToAvoidBottomInset = false,
       this.appBar,
       this.bottomNavigationBar});
@@ -18,7 +19,7 @@ class AppScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.black87,
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       bottomNavigationBar: bottomNavigationBar,
       appBar: appBar,
@@ -26,12 +27,12 @@ class AppScaffold extends StatelessWidget {
         clipBehavior: Clip.none,
         fit: StackFit.expand,
         children: [
-          Positioned(
+          const Positioned(
             top: -80,
             right: -150,
             child: ScaffoldBackground(color: primaryColor),
           ),
-          Positioned(
+          const Positioned(
             bottom: -80,
             left: -150,
             child: ScaffoldBackground(color: secondaryColor),

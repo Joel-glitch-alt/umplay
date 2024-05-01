@@ -10,6 +10,8 @@ import 'songs_search_component.dart';
 import 'top_search_component.dart';
 
 class SearchComponent extends StatefulWidget {
+  const SearchComponent({super.key});
+
   @override
   _SearchComponentState createState() => _SearchComponentState();
 }
@@ -47,11 +49,11 @@ class _SearchComponentState extends State<SearchComponent> {
   Widget build(BuildContext context) {
     return AnimatedScrollView(
       crossAxisAlignment: CrossAxisAlignment.start,
-      padding: EdgeInsets.only(top: 8, bottom: 30),
+      padding: const EdgeInsets.only(top: 8, bottom: 30),
       children: [
         HorizontalList(
           itemCount: searchOptionChipList.length,
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
@@ -63,7 +65,8 @@ class _SearchComponentState extends State<SearchComponent> {
                 setState(() {});
               },
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: boxDecorationDefault(
                   borderRadius: radius(20),
                   color: index == selectedOptionChipIndex
@@ -83,13 +86,13 @@ class _SearchComponentState extends State<SearchComponent> {
           },
         ),
         if (selectedOptionChipIndex == 0 || selectedOptionChipText == 'Top')
-          TopSearchComponent(),
+          const TopSearchComponent(),
         if (selectedOptionChipText == 'Songs') SongsSearchComponent(),
         if (selectedOptionChipText == 'Albums') AlbumsSearchComponent(),
         if (selectedOptionChipText == 'Playlists') PlayListsSearchComponent(),
         if (selectedOptionChipText == 'Podcasts') PodcastsSearchComponent(),
         if (selectedOptionChipText == 'Artists')
-          ArtistsFollowedListScreen(isFromSearch: true),
+          const ArtistsFollowedListScreen(isFromSearch: true),
       ],
     );
   }

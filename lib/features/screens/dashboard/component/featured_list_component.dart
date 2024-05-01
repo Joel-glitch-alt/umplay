@@ -3,9 +3,11 @@ import 'package:nb_utils/nb_utils.dart';
 
 import '../../../../core/components/cached_image_widget.dart';
 import '../../../../core/components/view_all_label_component.dart';
-import '../../../../core/utils/images.dart';
+import '../../../../core/constants/images.dart';
 
 class FeaturedListComponent extends StatefulWidget {
+  const FeaturedListComponent({super.key});
+
   @override
   _FeaturedListComponentState createState() => _FeaturedListComponentState();
 }
@@ -36,7 +38,7 @@ class _FeaturedListComponentState extends State<FeaturedListComponent> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -83,7 +85,7 @@ class _FeaturedListComponentState extends State<FeaturedListComponent> {
                       subTitle: '12 Songs',
                       subTitleTextStyle: secondaryTextStyle(size: 16),
                       trailing:
-                          Icon(Icons.more_vert, size: 20, color: Colors.white),
+                          const Icon(Icons.more_vert, size: 20, color: Colors.white),
                       padding: EdgeInsets.zero,
                     ).paddingAll(8),
                     CachedImageWidget(

@@ -7,12 +7,14 @@ import '../model/search_data_model.dart';
 class SongsSearchComponent extends StatelessWidget {
   final List<SearchDataModel> getSongsSearchData = getSongList();
 
+  SongsSearchComponent({super.key});
+
   @override
   Widget build(BuildContext context) {
     return AnimatedListView(
       itemCount: getSongsSearchData.length,
       listAnimationType: ListAnimationType.Slide,
-      padding: EdgeInsets.only(top: 16),
+      padding: const EdgeInsets.only(top: 16),
       shrinkWrap: true,
       itemBuilder: (ctx, index) {
         SearchDataModel songSearchData = getSongsSearchData[index];
@@ -25,7 +27,7 @@ class SongsSearchComponent extends StatelessWidget {
               fit: BoxFit.cover,
               width: 60,
               radius: 8),
-          trailing: Icon(Icons.more_vert, size: 20).onTap(() {
+          trailing: const Icon(Icons.more_vert, size: 20).onTap(() {
             //
           }),
         );

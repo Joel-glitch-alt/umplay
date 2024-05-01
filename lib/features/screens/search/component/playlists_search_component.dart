@@ -8,6 +8,8 @@ import '../model/search_data_model.dart';
 class PlayListsSearchComponent extends StatelessWidget {
   final List<SearchDataModel> getPlayListData = getPlayListsList();
 
+  PlayListsSearchComponent({super.key});
+
   @override
   Widget build(BuildContext context) {
     return AnimatedWrap(

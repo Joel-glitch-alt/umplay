@@ -1,47 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'package:nb_utils/nb_utils.dart';
 import 'package:umplay/app_theme.dart';
+import 'package:umplay/core/dependencies/bindings.dart';
+import 'package:umplay/core/routes/app_pages.dart';
+import 'package:umplay/core/routes/app_routes.dart';
 import 'package:umplay/features/auth/presentation/screens/splash_screen.dart';
 import 'package:umplay/core/store/app_store.dart';
 
 // APP STORE
 AppStore appStore = AppStore();
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+Future<void> main() async {
+  final widgetBinded = WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetBinded);
+
+  await AppBinding().dependencies();
 
   textPrimaryColorGlobal = Colors.white;
 
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  void initState() {
-    super.initState();
-    init();
-  }
-
-  void init() async {
-    //
-  }
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
+
       // themeMode: appStore.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+
+      title: 'UM Play',
+      themeMode: ThemeMode.system,
+      theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      home: SplashScreen(),
+      initialBinding: AppBinding(),
+      initialRoute: AppRoutes.initial,
+      getPages: AppPages.pages,
+      home: const SplashScreen(),
     );
   }
 }

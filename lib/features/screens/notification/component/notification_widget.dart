@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:umplay/core/constants/sizes.dart';
 
 import '../../../../core/components/cached_image_widget.dart';
 import '../../../../core/components/gradient_icon_widget.dart';
 import '../../../../core/components/icon_background_widget.dart';
-import '../../../../core/utils/constant.dart';
-import '../../../../core/utils/images.dart';
+import '../../../../core/constants/constant.dart';
+import '../../../../core/constants/images.dart';
 import '../model/notification_model.dart';
 
 class NotificationWidget extends StatefulWidget {
   final NotificationModel? modObj;
   final String? selectedText;
 
-  NotificationWidget({this.modObj, this.selectedText});
+  const NotificationWidget({super.key, this.modObj, this.selectedText});
 
   @override
   State<NotificationWidget> createState() => _NotificationWidgetState();
@@ -51,7 +52,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   suffix: Icon(Icons.more_vert, color: textPrimaryColorGlobal)
                       .onTap(() {
                     //
-                  }, borderRadius: radius(DEFAULT_RADIUS)),
+                  }, borderRadius: radius(USizes.defaultRadius)),
                 ),
                 4.height,
                 Text(widget.modObj!.message.validate(), style: boldTextStyle()),
@@ -89,8 +90,9 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   },
                   splashColor: Colors.transparent,
                   child: widget.modObj!.isLike.validate()
-                      ? GradientIconWidget(icon: Icons.favorite)
-                      : Icon(Icons.favorite, size: 24, color: Colors.grey),
+                      ? const GradientIconWidget(icon: Icons.favorite)
+                      : const Icon(Icons.favorite,
+                          size: 24, color: Colors.grey),
                 ),
                 16.width,
                 if (widget.selectedText == 'Podcasts')
@@ -99,7 +101,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                       //
                     },
                     borderRadius: radius(defaultInkWellRadius),
-                    child: IconBackgroundWidget(
+                    child: const IconBackgroundWidget(
                         icon: ic_add,
                         color: Colors.white,
                         boxHeight: 22,

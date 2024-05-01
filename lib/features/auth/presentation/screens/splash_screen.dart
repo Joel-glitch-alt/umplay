@@ -1,54 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:umplay/core/components/app_scaffold.dart';
+import 'package:umplay/core/constants/colors.dart';
+import 'package:umplay/core/constants/constant.dart';
+import 'package:umplay/core/constants/images.dart';
+import 'package:umplay/core/utils/device/device_utils.dart';
 
-import '../../../../core/components/app_scaffold.dart';
-import '../../../../core/utils/colors.dart';
-import '../../../../core/utils/constant.dart';
-import '../../../../core/utils/images.dart';
-import '../../../screens/walk_through/walk_through_screen.dart';
-
-class SplashScreen extends StatefulWidget {
-  @override
-  _SplashScreenState createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    init();
-  }
-
-  void init() async {
-    afterBuildCreated(() async {
-      setStatusBarColor(Colors.transparent,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.light);
-
-      finish(context);
-      await 3.seconds.delay;
-      WalkThroughScreen().launch(context, isNewTask: true);
-    });
-  }
-
-  @override
-  void setState(fn) {
-    if (mounted) super.setState(fn);
-  }
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
       body: Stack(
         children: [
-          Image.asset(app_logo, height: 100, width: 100).center(),
-          Positioned(
+          Image.asset(app_logo,
+                  height: UDeviceUtils.getScreenHeight(context) * 0.5,
+                  width: UDeviceUtils.getScreenWidth(context) * 0.5)
+              .center(),
+          const Positioned(
             bottom: 200,
             left: 0,
             right: 0,
             child: SpinKitCircle(
-                color: loaderColor, duration: Duration(seconds: 2)),
+              color: loaderColor,
+              duration: Duration(seconds: 2),
+            ),
           ),
           Positioned(
             bottom: 40,

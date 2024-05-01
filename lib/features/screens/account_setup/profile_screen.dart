@@ -6,12 +6,14 @@ import 'package:nb_utils/nb_utils.dart';
 import '../../../core/components/app_scaffold.dart';
 import '../../../core/components/cached_image_widget.dart';
 import '../../../core/components/common_app_button.dart';
-import '../../../core/utils/colors.dart';
+import '../../../core/constants/colors.dart';
 import '../../../core/utils/common.dart';
-import '../../../core/utils/images.dart';
+import '../../../core/constants/images.dart';
 import 'choose_artists_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
+
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
@@ -55,7 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         fit: StackFit.expand,
         children: [
           Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -65,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: 130,
                     decoration: boxDecorationWithRoundedCorners(
                         boxShape: BoxShape.circle),
-                    child: CachedImageWidget(
+                    child: const CachedImageWidget(
                         url: img_profile,
                         height: 120,
                         fit: BoxFit.cover,
@@ -132,7 +134,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       prefixIcon: DropdownButtonHideUnderline(
                         child: DropdownButton(
                           value: countryCode,
-                          icon: Icon(Icons.keyboard_arrow_down,
+                          icon: const Icon(Icons.keyboard_arrow_down,
                               color: Colors.grey, size: 22),
                           dropdownColor: lightPurple,
                           onChanged: (dynamic value) {
@@ -165,7 +167,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               btnText: 'Continue',
               onPressed: () {
                 hideKeyboard(context);
-                ChooseArtistsScreen().launch(context,
+                const ChooseArtistsScreen().launch(context,
                     pageRouteAnimation: PageRouteAnimation.Slide);
               },
             ),

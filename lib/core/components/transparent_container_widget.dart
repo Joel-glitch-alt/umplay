@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../utils/constant.dart';
+import '../constants/constant.dart';
 
 class TransparentContainerWidget extends StatelessWidget {
   final String? text;
@@ -15,8 +15,8 @@ class TransparentContainerWidget extends StatelessWidget {
   final VoidCallback? onPressed;
   final Gradient? gradient;
 
-  TransparentContainerWidget(
-    BuildContext context, {
+  const TransparentContainerWidget(
+    BuildContext context, {super.key, 
     this.text,
     this.img,
     this.child,
@@ -43,7 +43,7 @@ class TransparentContainerWidget extends StatelessWidget {
               height: height,
               alignment: Alignment.center,
               padding:
-                  padding ?? EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  padding ?? const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: boxDecorationDefault(
                 color: Colors.grey.withAlpha(22),
                 borderRadius: radius(borderRadius ?? DEFAULT_RADIUS),
@@ -57,7 +57,7 @@ class TransparentContainerWidget extends StatelessWidget {
                     textStyle: primaryTextStyle(color: Colors.white),
                     prefix: img.validate().isNotEmpty
                         ? Image.asset(img.validate(), height: 22, width: 22)
-                        : Offstage(),
+                        : const Offstage(),
                   ),
             ),
       ),

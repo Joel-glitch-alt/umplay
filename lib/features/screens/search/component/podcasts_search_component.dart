@@ -10,19 +10,21 @@ class PodcastsSearchComponent extends StatelessWidget {
   final List<SearchDataModel> getSearchPodcastList = getPodcastsList();
   final List<SearchDataModel> getSearchEpisodesList = getEpisodesList();
 
+  PodcastsSearchComponent({super.key});
+
   @override
   Widget build(BuildContext context) {
     return AnimatedScrollView(
       crossAxisAlignment: CrossAxisAlignment.start,
-      padding: EdgeInsets.only(top: 30),
+      padding: const EdgeInsets.only(top: 30),
       children: [
-        ViewAllLabel(label: 'Podcasts', isShowAll: false)
+        const ViewAllLabel(label: 'Podcasts', isShowAll: false)
             .paddingSymmetric(horizontal: 16),
         16.height,
         HorizontalList(
           spacing: 16,
           runSpacing: 0,
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           itemCount: getSearchPodcastList.length,
           itemBuilder: (context, index) {
             SearchDataModel podcastListData = getSearchPodcastList[index];
@@ -72,7 +74,7 @@ class PodcastsSearchComponent extends StatelessWidget {
           },
         ),
         20.height,
-        ViewAllLabel(label: 'Episodes', isShowAll: false)
+        const ViewAllLabel(label: 'Episodes', isShowAll: false)
             .paddingSymmetric(horizontal: 16),
         16.height,
         AnimatedWrap(

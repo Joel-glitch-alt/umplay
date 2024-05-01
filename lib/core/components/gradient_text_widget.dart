@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
-import '../utils/colors.dart';
+import '../constants/colors.dart';
 
 class GradientTextWidget extends StatelessWidget {
   final String text;
 
-  GradientTextWidget({required this.text});
+  const GradientTextWidget({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

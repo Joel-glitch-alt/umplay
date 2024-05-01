@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:umplay/core/constants/sizes.dart';
 
 import '../../../core/components/app_scaffold.dart';
 import '../../../core/components/cached_image_widget.dart';
 import '../../../core/components/gradient_icon_widget.dart';
 import '../../../core/components/icon_background_widget.dart';
 import '../../../core/utils/common.dart';
-import '../../../core/utils/constant.dart';
-import '../../../core/utils/images.dart';
+import '../../../core/constants/constant.dart';
+import '../../../core/constants/images.dart';
 import '../search/component/songs_search_component.dart';
 import '../search/model/search_data_model.dart';
 
 class PlaylistDetailScreen extends StatefulWidget {
   final SearchDataModel? playListData;
 
-  PlaylistDetailScreen({this.playListData});
+  const PlaylistDetailScreen({super.key, this.playListData});
 
   @override
   _PlaylistDetailScreenState createState() => _PlaylistDetailScreenState();
@@ -67,15 +68,15 @@ class _PlaylistDetailScreenState extends State<PlaylistDetailScreen> {
                         ),
                       ).expand(),
                       16.width,
-                      Icon(Icons.more_vert, size: 20).onTap(() {
+                      const Icon(Icons.more_vert, size: 20).onTap(() {
                         //
-                      }, borderRadius: radius(DEFAULT_RADIUS)),
+                      }, borderRadius: radius(USizes.defaultRadius)),
                     ],
                   ),
                   10.height,
                   Row(
                     children: [
-                      CachedImageWidget(
+                      const CachedImageWidget(
                         url: app_logo,
                         height: 30,
                         fit: BoxFit.cover,
@@ -107,8 +108,8 @@ class _PlaylistDetailScreenState extends State<PlaylistDetailScreen> {
                         },
                         splashColor: Colors.transparent,
                         child: widget.playListData!.isLike.validate()
-                            ? GradientIconWidget(icon: Icons.favorite)
-                            : Icon(Icons.favorite,
+                            ? const GradientIconWidget(icon: Icons.favorite)
+                            : const Icon(Icons.favorite,
                                 size: 24, color: Colors.grey),
                       ),
                     ],
@@ -135,7 +136,7 @@ class _PlaylistDetailScreenState extends State<PlaylistDetailScreen> {
               ),
               12.width,
               IconButton(
-                icon: IconBackgroundWidget(
+                icon: const IconBackgroundWidget(
                     icon: ic_add,
                     color: Colors.white,
                     boxHeight: 22,

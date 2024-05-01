@@ -12,7 +12,7 @@ class IconBackgroundWidget extends StatelessWidget {
   final Color? iconColor;
   final Gradient? gradient;
 
-  IconBackgroundWidget({required this.icon, this.color, this.height, this.width, this.padding, this.iconColor, this.boxHeight, this.boxWidth, this.gradient});
+  const IconBackgroundWidget({super.key, required this.icon, this.color, this.height, this.width, this.padding, this.iconColor, this.boxHeight, this.boxWidth, this.gradient});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class IconBackgroundWidget extends StatelessWidget {
         gradient: gradient,
         boxShadow: defaultBoxShadow(blurRadius: 0, shadowColor: Colors.black.withAlpha(20)),
       ),
-      child: Image.asset(icon.validate(), height: height ?? 22, width: width ?? 22, color: iconColor ?? null),
+      child: Image.asset(icon.validate(), height: height ?? 22, width: width ?? 22, color: iconColor),
     );
   }
 }

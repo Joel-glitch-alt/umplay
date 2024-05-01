@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/components/app_scaffold.dart';
 import '../../../core/components/icon_background_widget.dart';
 import '../../../core/utils/common.dart';
-import '../../../core/utils/images.dart';
+import '../../../core/constants/images.dart';
 import 'fragment/home_fragment.dart';
 import 'fragment/library_fragment.dart';
 import 'fragment/music_fragment.dart';
@@ -11,6 +11,8 @@ import 'fragment/podcasts_fragment.dart';
 import 'fragment/setting_fragment.dart';
 
 class DashBoardScreen extends StatefulWidget {
+  const DashBoardScreen({super.key});
+
   @override
   _DashBoardScreenState createState() => _DashBoardScreenState();
 }
@@ -28,11 +30,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   void init() async {
     _pages = [
-      MusicFragment(),
-      PodcastsFragment(),
-      HomeFragment(),
-      LibraryFragment(),
-      SettingFragment(),
+      const MusicFragment(),
+      const PodcastsFragment(),
+      const HomeFragment(),
+      const LibraryFragment(),
+      const SettingFragment(),
     ];
 
     setState(() {});
@@ -66,7 +68,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     return Container(
       decoration: BoxDecoration(
         gradient: primaryHomeLinearGradient(),
-        boxShadow: [BoxShadow(spreadRadius: 0, color: Colors.transparent)],
+        boxShadow: const [BoxShadow(spreadRadius: 0, color: Colors.transparent)],
       ),
       child: BottomNavigationBar(
         currentIndex: _selectedItemIndex,

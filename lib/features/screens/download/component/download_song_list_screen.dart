@@ -6,6 +6,8 @@ import '../model/download_list_model.dart';
 import 'download_item_widget.dart';
 
 class DownloadSongListComponent extends StatefulWidget {
+  const DownloadSongListComponent({super.key});
+
   @override
   _DownloadSongListComponentState createState() =>
       _DownloadSongListComponentState();
@@ -37,10 +39,10 @@ class _DownloadSongListComponentState extends State<DownloadSongListComponent> {
         ListView.separated(
           itemCount: songListData.length,
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          padding: EdgeInsets.all(16),
+          physics: const NeverScrollableScrollPhysics(),
+          padding: const EdgeInsets.all(16),
           separatorBuilder: (context, index) =>
-              CommonAppDividerWidget(height: 30),
+              const CommonAppDividerWidget(height: 30),
           itemBuilder: (ctx, index) {
             DownloadSongListModel data = songListData[index];
             return AnimatedItemWidget(child: DownloadItemWidget(modObj: data));

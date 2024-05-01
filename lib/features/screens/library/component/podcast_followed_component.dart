@@ -3,7 +3,7 @@ import 'package:nb_utils/nb_utils.dart';
 
 import '../../../../core/components/cached_image_widget.dart';
 import '../../../../core/components/view_all_label_component.dart';
-import '../../../../core/utils/images.dart';
+import '../../../../core/constants/images.dart';
 
 class PodcastFollowedComponent extends StatelessWidget {
   final List<String> podcastImgList = [
@@ -13,6 +13,8 @@ class PodcastFollowedComponent extends StatelessWidget {
     ranveer_show_podcast,
     talk_house_podcast
   ];
+
+  PodcastFollowedComponent({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class PodcastFollowedComponent extends StatelessWidget {
           itemCount: podcastImgList.length,
           spacing: 16,
           runSpacing: 0,
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           itemBuilder: (context, index) {
             return CachedImageWidget(
               url: podcastImgList[index],

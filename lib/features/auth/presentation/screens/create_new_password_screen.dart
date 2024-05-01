@@ -7,12 +7,14 @@ import '../../../../core/components/app_scaffold.dart';
 import '../../../../core/components/blur_dialog_widget.dart';
 import '../../../../core/components/common_app_button.dart';
 import '../../../../core/components/icon_background_widget.dart';
-import '../../../../core/utils/colors.dart';
+import '../../../../core/constants/colors.dart';
 import '../../../../core/utils/common.dart';
-import '../../../../core/utils/images.dart';
+import '../../../../core/constants/images.dart';
 import '../../../screens/dashboard/dashboard_screen.dart';
 
 class CreateNewPasswordScreen extends StatefulWidget {
+  const CreateNewPasswordScreen({super.key});
+
   @override
   _CreateNewPasswordScreenState createState() =>
       _CreateNewPasswordScreenState();
@@ -51,7 +53,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
         alignment: Alignment.center,
         children: [
           SingleChildScrollView(
-            padding: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 50),
+            padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 50),
             child: Column(
               children: [
                 Align(
@@ -150,7 +152,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          IconBackgroundWidget(icon: ic_shield),
+                          const IconBackgroundWidget(icon: ic_shield),
                           20.height,
                           Text('Congr atulations!',
                               style:
@@ -161,7 +163,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                               style: secondaryTextStyle(),
                               textAlign: TextAlign.center),
                           30.height,
-                          SpinKitCircle(
+                          const SpinKitCircle(
                               color: loaderColor,
                               duration: Duration(seconds: 2)),
                         ],
@@ -171,7 +173,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                 );
                 await 1.seconds.delay;
                 finish(context);
-                DashBoardScreen().launch(context,
+                const DashBoardScreen().launch(context,
                     pageRouteAnimation: PageRouteAnimation.Slide);
               },
             ),

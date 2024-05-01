@@ -4,13 +4,15 @@ import 'package:nb_utils/nb_utils.dart';
 import '../../../../core/components/app_scaffold.dart';
 import '../../../../core/components/cached_image_widget.dart';
 import '../../../../core/utils/common.dart';
-import '../../../../core/utils/images.dart';
+import '../../../../core/constants/images.dart';
 import '../../notification/notification_screen.dart';
 import '../../search/search_screen.dart';
 import '../component/favourite_music_component.dart';
 import '../component/fan_base_trending_videos_component.dart';
 
 class MusicFragment extends StatefulWidget {
+  const MusicFragment({super.key});
+
   @override
   _MusicFragmentState createState() => _MusicFragmentState();
 }
@@ -46,23 +48,23 @@ class _MusicFragmentState extends State<MusicFragment> {
         actionWidget1: IconButton(
           icon: Image.asset(ic_search, height: 22, width: 22),
           onPressed: () {
-            SearchScreen()
+            const SearchScreen()
                 .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
           },
         ),
         actionWidget2: IconButton(
           icon: Image.asset(ic_notification, height: 22, width: 22),
           onPressed: () {
-            NotificationScreen().launch(context);
+            const NotificationScreen().launch(context);
           },
         ),
       ),
       body: AnimatedScrollView(
-        padding: EdgeInsets.only(bottom: 30),
+        padding: const EdgeInsets.only(bottom: 30),
         children: [
           HorizontalList(
             itemCount: musicChipList.length,
-            padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+            padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
@@ -73,7 +75,7 @@ class _MusicFragmentState extends State<MusicFragment> {
                   setState(() {});
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: boxDecorationDefault(
                     borderRadius: radius(20),
                     color: index == selectedMusicChipIndex
@@ -96,7 +98,7 @@ class _MusicFragmentState extends State<MusicFragment> {
           Container(
             width: context.width(),
             height: 225,
-            margin: EdgeInsets.symmetric(horizontal: 16),
+            margin: const EdgeInsets.symmetric(horizontal: 16),
             decoration: boxDecorationDefault(
               color: Colors.grey.withAlpha(25),
               borderRadius: radius(18),
@@ -119,7 +121,7 @@ class _MusicFragmentState extends State<MusicFragment> {
                   right: 0,
                   child: SettingItemWidget(
                     title: 'Counting Stars',
-                    padding: EdgeInsets.only(left: 22, bottom: 20),
+                    padding: const EdgeInsets.only(left: 22, bottom: 20),
                     titleTextStyle: boldTextStyle(),
                     subTitle: 'OneRepublic',
                     subTitleTextStyle: secondaryTextStyle(),
@@ -129,9 +131,9 @@ class _MusicFragmentState extends State<MusicFragment> {
             ),
           ),
           16.height,
-          FavouriteMusicComponent(),
+          const FavouriteMusicComponent(),
           16.height,
-          FanBaseTrendingVideosComponent(),
+          const FanBaseTrendingVideosComponent(),
         ],
       ),
     );

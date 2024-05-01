@@ -1,25 +1,32 @@
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:umplay/core/services/cache_manager.dart';
 
-class AuthService extends GetxService {
+class AuthService extends GetxService with CacheManager {
   static final AuthService instance = Get.find();
 
-  final RxString _accessToken = ''.obs;
-  final RxString _tokenUser = ''.obs;
-  final RxBool _isFirstTime = true.obs;
+  final RxBool _isLoggedIn = false.obs;
 
-  String get accessToken => _accessToken.value;
-  String get username => _tokenUser.value;
-  bool get isFirstTime => _isFirstTime.value;
+  bool get isLoggedIn => _isLoggedIn.value;
+  String get accessToken => getToken() ?? '';
 
-  void setAccessToken(String token) {
-    _accessToken.value = token;
+  void logOut() {
+    _isLoggedIn.value = false;
+    removeToken();
   }
 
-  void setUserToken(String user) {
-    _tokenUser.value = user;
+  void login(String? token) async {
+    _isLoggedIn.value = true;
+    await saveToken(token);
   }
 
-  void setIsFirstTime(bool status) {
-    _isFirstTime.value = status;
+  void checkLoginStatus() {
+    final token = getToken();
+    if (kDebugMode) {
+      print(token);
+    }
+    if (token.toString().isNotEmpty) {
+      _isLoggedIn.value = true;
+    }
   }
 }

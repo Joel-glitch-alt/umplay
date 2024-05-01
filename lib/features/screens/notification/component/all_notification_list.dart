@@ -6,6 +6,8 @@ import '../model/notification_model.dart';
 import 'notification_widget.dart';
 
 class AllNotificationList extends StatefulWidget {
+  const AllNotificationList({super.key});
+
   @override
   State<AllNotificationList> createState() => _AllNotificationListState();
 }
@@ -25,23 +27,23 @@ class _AllNotificationListState extends State<AllNotificationList> {
         ListView.separated(
           itemCount: newNotificationData.length,
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           separatorBuilder: (context, index) =>
-              CommonAppDividerWidget(height: 30),
+              const CommonAppDividerWidget(height: 30),
           itemBuilder: (ctx, index) {
             NotificationModel data = newNotificationData[index];
             return AnimatedItemWidget(child: NotificationWidget(modObj: data));
           },
         ),
-        CommonAppDividerWidget(height: 30),
+        const CommonAppDividerWidget(height: 30),
         Text('Earlier', style: boldTextStyle(size: 18)),
         16.height,
         ListView.separated(
           itemCount: earlierNotificationData.length,
           separatorBuilder: (context, index) =>
-              CommonAppDividerWidget(height: 30),
+              const CommonAppDividerWidget(height: 30),
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (ctx, index) {
             NotificationModel data = earlierNotificationData[index];
             return AnimatedItemWidget(child: NotificationWidget(modObj: data));

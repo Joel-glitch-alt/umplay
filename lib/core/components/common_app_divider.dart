@@ -6,7 +6,7 @@ class CommonAppDividerWidget extends StatelessWidget {
   final double? height;
   final double? thickness;
 
-  CommonAppDividerWidget({this.text, this.height, this.thickness});
+  const CommonAppDividerWidget({super.key, this.text, this.height, this.thickness});
 
   @override
   Widget build(BuildContext context) {

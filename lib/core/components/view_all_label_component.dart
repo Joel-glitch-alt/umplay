@@ -10,7 +10,7 @@ class ViewAllLabel extends StatelessWidget {
   final Color? trailingTextColor;
   final TextStyle? style;
 
-  ViewAllLabel({required this.label, this.onTap, this.labelSize, this.isShowAll = true, this.trailingText, this.trailingTextColor, this.style});
+  const ViewAllLabel({super.key, required this.label, this.onTap, this.labelSize, this.isShowAll = true, this.trailingText, this.trailingTextColor, this.style});
 
   @override
   Widget build(BuildContext context) {

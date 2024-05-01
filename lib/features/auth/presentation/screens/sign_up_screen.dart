@@ -4,14 +4,15 @@ import 'package:nb_utils/nb_utils.dart';
 
 import '../../../../core/components/app_scaffold.dart';
 import '../../../../core/components/common_app_button.dart';
-import '../../../../core/components/common_app_divider.dart';
 import '../../../../core/components/gradient_text_widget.dart';
 import '../../../../core/utils/common.dart';
-import '../../../../core/utils/images.dart';
+import '../../../../core/constants/images.dart';
 import '../../../screens/account_setup/profile_screen.dart';
-import 'sign_in_screen.dart';
+import 'sign_in/sign_in_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
+
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }
@@ -114,7 +115,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           btnText: 'Sign up',
           onPressed: () {
             hideKeyboard(context);
-            ProfileScreen()
+            const ProfileScreen()
                 .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
           },
         ),
@@ -157,7 +158,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return AppScaffold(
       appBar: commonAppBarWidget(context, title: ''),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -174,10 +175,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 TextButton(
                   onPressed: () {
                     hideKeyboard(context);
-                    SignInScreen().launch(context,
+                    const SignInScreen().launch(context,
                         pageRouteAnimation: PageRouteAnimation.Slide);
                   },
-                  child: GradientTextWidget(text: 'Sign in'),
+                  child: const GradientTextWidget(text: 'Sign in'),
                 ),
               ],
             ),

@@ -5,11 +5,13 @@ import '../../../../core/components/app_scaffold.dart';
 import '../../../../core/components/cached_image_widget.dart';
 import '../../../../core/components/common_app_divider.dart';
 import '../../../../core/components/custom_switch.dart';
-import '../../../../core/utils/colors.dart';
+import '../../../../core/constants/colors.dart';
 import '../../../../core/utils/common.dart';
-import '../../../../core/utils/images.dart';
+import '../../../../core/constants/images.dart';
 
 class SettingFragment extends StatefulWidget {
+  const SettingFragment({super.key});
+
   @override
   _SettingFragmentState createState() => _SettingFragmentState();
 }
@@ -47,7 +49,7 @@ class _SettingFragmentState extends State<SettingFragment> {
       {String? icon, String? text, Color? color, Gradient? gradient}) {
     return Container(
       width: context.width() / 4 - 18,
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
       decoration: boxDecorationDefault(
         borderRadius: radius(8),
         color: color,
@@ -79,21 +81,21 @@ class _SettingFragmentState extends State<SettingFragment> {
           titleTextStyle: boldTextStyle(color: textPrimaryColorGlobal),
           subTitle: 'estherhoward@gmail.com',
           subTitleTextStyle: primaryTextStyle(color: textPrimaryColorGlobal),
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          trailing: Icon(Icons.arrow_forward_ios, size: 14),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          trailing: const Icon(Icons.arrow_forward_ios, size: 14),
           splashColor: lightPurple.withOpacity(0.3),
           hoverColor: lightPurple.withOpacity(0.3),
           onTap: () {
             //
           },
-          leading: CachedImageWidget(
+          leading: const CachedImageWidget(
               url: img_profile,
               height: 75,
               fit: BoxFit.cover,
               width: 75,
               radius: 100),
         ),
-        CommonAppDividerWidget(height: 30, thickness: 1),
+        const CommonAppDividerWidget(height: 30, thickness: 1),
         Wrap(
           spacing: 12,
           direction: Axis.horizontal,
@@ -168,7 +170,7 @@ class _SettingFragmentState extends State<SettingFragment> {
         SettingItemWidget(
           title: 'Music preferences',
           titleTextStyle: primaryTextStyle(),
-          trailing: Icon(Icons.arrow_forward_ios, size: 14),
+          trailing: const Icon(Icons.arrow_forward_ios, size: 14),
           splashColor: commonSplashColor,
           hoverColor: commonSplashColor,
           onTap: () {
@@ -223,7 +225,7 @@ class _SettingFragmentState extends State<SettingFragment> {
             Text('${_currentSliderValue.toInt().toString()}%',
                 style: secondaryTextStyle()),
             SliderTheme(
-              data: SliderThemeData(
+              data: const SliderThemeData(
                   trackHeight: 1,
                   thumbShape: RoundSliderThumbShape(enabledThumbRadius: 5)),
               child: Slider(
@@ -299,7 +301,7 @@ class _SettingFragmentState extends State<SettingFragment> {
     return AppScaffold(
       appBar: commonAppBarWidget(context, title: 'Settings'),
       body: AnimatedScrollView(
-        padding: EdgeInsets.only(bottom: 30),
+        padding: const EdgeInsets.only(bottom: 30),
         children: [
           16.height,
           buildTopWidget(),

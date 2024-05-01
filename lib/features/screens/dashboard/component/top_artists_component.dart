@@ -11,7 +11,7 @@ import '../../library/model/artists_followed_list_model.dart';
 class TopArtistsComponent extends StatefulWidget {
   final double? radius;
 
-  TopArtistsComponent({this.radius});
+  const TopArtistsComponent({super.key, this.radius});
 
   @override
   _TopArtistsComponentState createState() => _TopArtistsComponentState();
@@ -44,7 +44,7 @@ class _TopArtistsComponentState extends State<TopArtistsComponent> {
           label: 'Top Artists',
           onTap: () {
             Get.to(
-                () => ArtistsFollowedScreen(
+                () => const ArtistsFollowedScreen(
                       appBarTitle: 'Artists',
                       hideActionWidget: false,
                     ),
@@ -56,7 +56,7 @@ class _TopArtistsComponentState extends State<TopArtistsComponent> {
           itemCount: artistsFollowedList.length,
           spacing: 16,
           runSpacing: 0,
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           itemBuilder: (context, index) {
             ArtistsFollowedListModel artistsFollowedListData =
                 artistsFollowedList[index];

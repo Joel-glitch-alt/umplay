@@ -8,7 +8,7 @@ import 'notification_widget.dart';
 class PodcastsNotificationList extends StatefulWidget {
   final String? selectedText;
 
-  PodcastsNotificationList({this.selectedText});
+  const PodcastsNotificationList({super.key, this.selectedText});
 
   @override
   State<PodcastsNotificationList> createState() =>
@@ -31,24 +31,24 @@ class _PodcastsNotificationListState extends State<PodcastsNotificationList> {
         ListView.separated(
           itemCount: newNotificationData.length,
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           separatorBuilder: (context, index) =>
-              CommonAppDividerWidget(height: 30),
+              const CommonAppDividerWidget(height: 30),
           itemBuilder: (ctx, index) {
             NotificationModel data = newNotificationData[index];
             return NotificationWidget(
                 modObj: data, selectedText: widget.selectedText);
           },
         ),
-        CommonAppDividerWidget(height: 30),
+        const CommonAppDividerWidget(height: 30),
         Text('Earlier', style: boldTextStyle(size: 18)),
         16.height,
         ListView.separated(
           itemCount: earlierNotificationData.length,
           separatorBuilder: (context, index) =>
-              CommonAppDividerWidget(height: 30),
+              const CommonAppDividerWidget(height: 30),
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (ctx, index) {
             NotificationModel data = earlierNotificationData[index];
             return NotificationWidget(

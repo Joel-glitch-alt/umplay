@@ -4,7 +4,7 @@ import 'package:nb_utils/nb_utils.dart';
 class ScaffoldBackground extends StatelessWidget {
   final Color color;
 
-  ScaffoldBackground({required this.color});
+  const ScaffoldBackground({super.key, required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class ScaffoldBackground extends StatelessWidget {
           BoxShadow(
             color: color.withOpacity(0.12),
             blurRadius: 100,
-            offset: Offset(15, 20),
+            offset: const Offset(15, 20),
             blurStyle: BlurStyle.normal,
             spreadRadius: 10,
           ),

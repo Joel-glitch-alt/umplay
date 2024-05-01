@@ -6,11 +6,13 @@ import '../../../../core/components/common_app_button.dart';
 import '../../../../core/components/icon_background_widget.dart';
 import '../../../../core/components/transparent_container_widget.dart';
 import '../../../../core/utils/common.dart';
-import '../../../../core/utils/images.dart';
+import '../../../../core/constants/images.dart';
 import 'create_new_password_screen.dart';
 import 'otp_screen.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
+  const ForgotPasswordScreen({super.key});
+
   @override
   _ForgotPasswordScreenState createState() => _ForgotPasswordScreenState();
 }
@@ -45,7 +47,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             width: context.width(),
             alignment: Alignment.center,
             child: SingleChildScrollView(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
                   Text(
@@ -66,12 +68,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       title: 'via SMS:',
                       titleTextStyle: primaryTextStyle(color: Colors.white),
                       subTitle: '(406) *****20',
-                      padding: EdgeInsets.all(4),
+                      padding: const EdgeInsets.all(4),
                       trailing: onSmsTap
                           ? Image.asset(ic_check,
                               height: 14, width: 14, color: greenColor)
                           : null,
-                      leading: IconBackgroundWidget(icon: ic_chat),
+                      leading: const IconBackgroundWidget(icon: ic_chat),
                     ),
                   ),
                   22.height,
@@ -89,13 +91,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       title: 'via Email:',
                       titleTextStyle: primaryTextStyle(color: Colors.white),
                       subTitle: 'es*******rd@example.com',
-                      padding: EdgeInsets.all(4),
+                      padding: const EdgeInsets.all(4),
                       trailing: onEmailTap
                           ? Image.asset(ic_check,
                               height: 14, width: 14, color: greenColor)
                           : null,
                       leading: Container(
-                        padding: EdgeInsets.all(14),
+                        padding: const EdgeInsets.all(14),
                         decoration: boxDecorationDefault(
                           color: Colors.grey.withAlpha(22),
                           boxShadow: defaultBoxShadow(
@@ -117,12 +119,14 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             child: CommonAppButton(
               btnText: 'Continue',
               onPressed: () {
-                if (onEmailTap)
-                  CreateNewPasswordScreen().launch(context,
+                if (onEmailTap) {
+                  const CreateNewPasswordScreen().launch(context,
                       pageRouteAnimation: PageRouteAnimation.Slide);
-                if (onSmsTap)
-                  OTPScreen().launch(context,
+                }
+                if (onSmsTap) {
+                  const OTPScreen().launch(context,
                       pageRouteAnimation: PageRouteAnimation.Slide);
+                }
               },
             ),
           ),

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:umplay/core/constants/sizes.dart';
 
 import '../../../../core/components/cached_image_widget.dart';
 import '../../../../core/components/view_all_label_component.dart';
-import '../../../../core/utils/constant.dart';
+import '../../../../core/constants/constant.dart';
 import '../model/search_data_model.dart';
 
 class TopSearchComponent extends StatefulWidget {
+  const TopSearchComponent({super.key});
+
   @override
   _TopSearchComponentState createState() => _TopSearchComponentState();
 }
@@ -36,7 +39,7 @@ class _TopSearchComponentState extends State<TopSearchComponent> {
           title: getTopSearchList.titleName.validate(),
           titleTextStyle: boldTextStyle(color: textPrimaryColorGlobal),
           subTitle: getTopSearchList.subTitleName.validate(),
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 30),
           leading: CachedImageWidget(
               url: getTopSearchList.img.validate(),
               height: 55,
@@ -44,13 +47,13 @@ class _TopSearchComponentState extends State<TopSearchComponent> {
               width: 55,
               radius: 80),
         ),
-        ViewAllLabel(label: 'Albums', isShowAll: false)
+        const ViewAllLabel(label: 'Albums', isShowAll: false)
             .paddingSymmetric(horizontal: 16),
         16.height,
         HorizontalList(
           spacing: 16,
           runSpacing: 0,
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           itemCount: getTopSearchList.albums.validate().length,
           itemBuilder: (context, index) {
             SearchDataModel albumsListData =
@@ -101,7 +104,7 @@ class _TopSearchComponentState extends State<TopSearchComponent> {
             return SettingItemWidget(
               title: searchDataList.titleName.validate(),
               subTitle: searchDataList.subTitleName.validate(),
-              padding: EdgeInsets.only(bottom: 16),
+              padding: const EdgeInsets.only(bottom: 16),
               leading: CachedImageWidget(
                 url: searchDataList.img.validate(),
                 height: 60,
@@ -113,8 +116,8 @@ class _TopSearchComponentState extends State<TopSearchComponent> {
                   ? Icon(Icons.more_vert, color: textPrimaryColorGlobal).onTap(
                       () {
                       //
-                    }, borderRadius: radius(DEFAULT_RADIUS))
-                  : Offstage(),
+                    }, borderRadius: radius(USizes.defaultRadius))
+                  : const Offstage(),
             );
           }),
         ).paddingSymmetric(horizontal: 16),

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:umplay/core/constants/sizes.dart';
 
 import '../../../core/components/app_scaffold.dart';
 import '../../../core/components/cached_image_widget.dart';
 import '../../../core/components/common_app_divider.dart';
 import '../../../core/components/view_all_label_component.dart';
 import '../../../core/utils/common.dart';
-import '../../../core/utils/constant.dart';
-import '../../../core/utils/images.dart';
+import '../../../core/constants/constant.dart';
+import '../../../core/constants/images.dart';
 import '../download/component/download_item_widget.dart';
 import '../download/model/download_list_model.dart';
 import '../search/model/search_data_model.dart';
@@ -15,7 +16,7 @@ import '../search/model/search_data_model.dart';
 class PodcastDetailScreen extends StatefulWidget {
   final SearchDataModel? podCastListData;
 
-  PodcastDetailScreen({this.podCastListData});
+  const PodcastDetailScreen({super.key, this.podCastListData});
 
   @override
   _PodcastDetailScreenState createState() => _PodcastDetailScreenState();
@@ -70,9 +71,9 @@ class _PodcastDetailScreenState extends State<PodcastDetailScreen> {
                         ),
                       ).expand(),
                       16.width,
-                      Icon(Icons.more_vert, size: 20).onTap(() {
+                      const Icon(Icons.more_vert, size: 20).onTap(() {
                         //
-                      }, borderRadius: radius(DEFAULT_RADIUS)),
+                      }, borderRadius: radius(USizes.defaultRadius)),
                     ],
                   ),
                   10.height,
@@ -104,15 +105,15 @@ class _PodcastDetailScreenState extends State<PodcastDetailScreen> {
             style: secondaryTextStyle(),
           ).paddingSymmetric(horizontal: 16),
           20.height,
-          ViewAllLabel(label: 'All Episodes', isShowAll: false)
+          const ViewAllLabel(label: 'All Episodes', isShowAll: false)
               .paddingSymmetric(horizontal: 16),
           ListView.separated(
             separatorBuilder: (context, index) =>
-                CommonAppDividerWidget(height: 30),
+                const CommonAppDividerWidget(height: 30),
             itemCount: episodeListData.length,
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.all(16),
+            physics: const NeverScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(16),
             itemBuilder: (context, index) {
               DownloadSongListModel data = episodeListData[index];
               return DownloadItemWidget(modObj: data, isPodcastDetail: true);

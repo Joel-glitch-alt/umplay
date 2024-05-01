@@ -13,7 +13,7 @@ class CustomSwitch extends StatefulWidget {
   final Color? activeTextColor;
   final Color? inactiveTextColor;
 
-  CustomSwitch({
+  const CustomSwitch({super.key, 
     required this.value,
     required this.onChanged,
     this.activeColor,
@@ -37,7 +37,7 @@ class _CustomSwitchState extends State<CustomSwitch>
   void initState() {
     super.initState();
     _animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 60));
+        AnimationController(vsync: this, duration: const Duration(milliseconds: 60));
     _circleAnimation = AlignmentTween(
       begin: widget.value ? Alignment.centerRight : Alignment.centerLeft,
       end: widget.value ? Alignment.centerLeft : Alignment.centerRight,

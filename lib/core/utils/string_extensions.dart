@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'colors.dart';
-import 'images.dart';
+import '../constants/colors.dart';
+import '../constants/images.dart';
 
 extension strEtx on String {
   Widget iconImage({double? size, Color? color, BoxFit? fit}) {

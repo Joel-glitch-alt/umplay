@@ -3,15 +3,16 @@ import 'package:nb_utils/nb_utils.dart';
 
 import '../../../../core/components/app_scaffold.dart';
 import '../../../../core/utils/common.dart';
-import '../../../../core/utils/images.dart';
+import '../../../../core/constants/images.dart';
 import '../../notification/notification_screen.dart';
 import '../../search/search_screen.dart';
-import '../component/featured_list_component.dart';
 import '../component/top_artists_component.dart';
 import '../component/fan_base_trending_videos_component.dart';
 import '../component/my_artist.dart';
 
 class HomeFragment extends StatefulWidget {
+  const HomeFragment({super.key});
+
   @override
   _HomeFragmentState createState() => _HomeFragmentState();
 }
@@ -52,28 +53,28 @@ class _HomeFragmentState extends State<HomeFragment> {
         actionWidget1: IconButton(
           icon: Image.asset(ic_search, height: 22, width: 22),
           onPressed: () {
-            SearchScreen()
+            const SearchScreen()
                 .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
           },
         ),
         actionWidget2: IconButton(
           icon: Image.asset(ic_notification, height: 22, width: 22),
           onPressed: () {
-            NotificationScreen().launch(context);
+            const NotificationScreen().launch(context);
           },
         ),
       ),
       body: AnimatedScrollView(
-        physics: AlwaysScrollableScrollPhysics(),
+        physics: const AlwaysScrollableScrollPhysics(),
         listAnimationType: ListAnimationType.FadeIn,
         fadeInConfiguration: FadeInConfiguration(duration: 2.seconds),
         children: [
           6.height,
-          MyArtistComponent(),
+          const MyArtistComponent(),
           16.height,
-          TopArtistsComponent(),
+          const TopArtistsComponent(),
           16.height,
-          FanBaseTrendingVideosComponent(),
+          const FanBaseTrendingVideosComponent(),
           16.height,
         ],
       ),

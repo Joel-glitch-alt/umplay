@@ -7,7 +7,7 @@ import '../../../core/components/cached_image_widget.dart';
 import '../../../core/components/icon_background_widget.dart';
 import '../../../core/components/view_all_label_component.dart';
 import '../../../core/utils/common.dart';
-import '../../../core/utils/images.dart';
+import '../../../core/constants/images.dart';
 import '../dashboard/fragment/artists_fragment.dart';
 import '../dashboard/fragment/music_fragment.dart';
 import '../dashboard/fragment/podcasts_fragment.dart';
@@ -15,6 +15,8 @@ import 'component/search_component.dart';
 import 'model/search_data_model.dart';
 
 class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key});
+
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
@@ -69,7 +71,7 @@ class _SearchScreenState extends State<SearchScreen> {
               title: recentSearchData.titleName.validate(),
               titleTextStyle: boldTextStyle(color: textPrimaryColorGlobal),
               subTitle: recentSearchData.subTitleName.validate(),
-              padding: EdgeInsets.symmetric(vertical: 12),
+              padding: const EdgeInsets.symmetric(vertical: 12),
               leading: CachedImageWidget(
                 url: recentSearchData.img.validate(),
                 height: 55,
@@ -77,7 +79,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 width: 55,
                 radius: recentSearchData.subTitleName == 'Song' ? 8 : 80,
               ),
-              trailing: Icon(Icons.close, size: 20).onTap(() {
+              trailing: const Icon(Icons.close, size: 20).onTap(() {
                 getRecentSearchDataList.removeAt(index);
                 if (getRecentSearchDataList.isEmpty) {
                   isTapToSearch = false;
@@ -129,7 +131,7 @@ class _SearchScreenState extends State<SearchScreen> {
               16.height,
               if (searchText.isEmpty && !isTapToSearch)
                 HorizontalList(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   itemCount: searchChipList.length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
@@ -137,19 +139,19 @@ class _SearchScreenState extends State<SearchScreen> {
                         hideKeyboard(context);
                         selectSearchChipIndex = index;
                         setState(() {});
-                        if (selectSearchChipIndex == 0)
-                          ArtistsFragment().launch(context,
+                        if (selectSearchChipIndex == 0) {
+                          const ArtistsFragment().launch(context,
                               pageRouteAnimation: PageRouteAnimation.Slide);
-                        else if (selectSearchChipIndex == 1)
-                          MusicFragment().launch(context,
+                        } else if (selectSearchChipIndex == 1)
+                          const MusicFragment().launch(context,
                               pageRouteAnimation: PageRouteAnimation.Slide);
                         else
-                          PodcastsFragment().launch(context,
+                          const PodcastsFragment().launch(context,
                               pageRouteAnimation: PageRouteAnimation.Slide);
                       },
                       child: Container(
                         padding:
-                            EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                            const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         decoration: boxDecorationDefault(
                           borderRadius: radius(20),
                           color: Colors.grey.withAlpha(25),
@@ -167,7 +169,7 @@ class _SearchScreenState extends State<SearchScreen> {
               else if (searchText.isEmpty && isTapToSearch)
                 buildRecentSearchWidget()
               else
-                SearchComponent(),
+                const SearchComponent(),
             ],
           ),
           if (!isTapToSearch && searchText.isEmpty)

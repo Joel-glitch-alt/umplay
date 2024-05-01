@@ -3,10 +3,12 @@ import 'package:nb_utils/nb_utils.dart';
 
 import '../../../core/components/app_scaffold.dart';
 import '../../../core/utils/common.dart';
-import '../../../core/utils/images.dart';
+import '../../../core/constants/images.dart';
 import 'component/download_song_list_screen.dart';
 
 class DownloadedSongListScreen extends StatefulWidget {
+  const DownloadedSongListScreen({super.key});
+
   @override
   _DownloadedSongListScreenState createState() =>
       _DownloadedSongListScreenState();
@@ -54,14 +56,14 @@ class _DownloadedSongListScreenState extends State<DownloadedSongListScreen> {
         ),
       ),
       body: AnimatedScrollView(
-        padding: EdgeInsets.only(bottom: 30),
-        physics: AlwaysScrollableScrollPhysics(),
+        padding: const EdgeInsets.only(bottom: 30),
+        physics: const AlwaysScrollableScrollPhysics(),
         listAnimationType: ListAnimationType.Slide,
         fadeInConfiguration: FadeInConfiguration(duration: 2.seconds),
         children: [
           HorizontalList(
             itemCount: songChipList.length,
-            padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+            padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
@@ -72,7 +74,7 @@ class _DownloadedSongListScreenState extends State<DownloadedSongListScreen> {
                   setState(() {});
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: boxDecorationDefault(
                     borderRadius: radius(20),
                     color: index == selectedSongChipIndex
@@ -94,11 +96,11 @@ class _DownloadedSongListScreenState extends State<DownloadedSongListScreen> {
           22.height,
           if (selectedSongChipIndex == 0 ||
               selectedSongChipText == 'Downloaded')
-            DownloadSongListComponent(),
-          if (selectedSongChipText == 'Saved') DownloadSongListComponent(),
-          if (selectedSongChipText == 'Unplayed') DownloadSongListComponent(),
+            const DownloadSongListComponent(),
+          if (selectedSongChipText == 'Saved') const DownloadSongListComponent(),
+          if (selectedSongChipText == 'Unplayed') const DownloadSongListComponent(),
           if (selectedSongChipText == 'Continue Listening')
-            DownloadSongListComponent(),
+            const DownloadSongListComponent(),
         ],
       ),
     );

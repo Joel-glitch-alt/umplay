@@ -3,10 +3,12 @@ import 'package:nb_utils/nb_utils.dart';
 
 import '../../../core/components/app_scaffold.dart';
 import '../../../core/utils/common.dart';
-import '../../../core/utils/images.dart';
+import '../../../core/constants/images.dart';
 import 'component/download_episodes_list_screen.dart';
 
 class DownloadEpisodesScreen extends StatefulWidget {
+  const DownloadEpisodesScreen({super.key});
+
   @override
   _DownloadEpisodesScreenState createState() => _DownloadEpisodesScreenState();
 }
@@ -53,14 +55,14 @@ class _DownloadEpisodesScreenState extends State<DownloadEpisodesScreen> {
         ),
       ),
       body: AnimatedScrollView(
-        padding: EdgeInsets.only(bottom: 30),
-        physics: AlwaysScrollableScrollPhysics(),
+        padding: const EdgeInsets.only(bottom: 30),
+        physics: const AlwaysScrollableScrollPhysics(),
         listAnimationType: ListAnimationType.Slide,
         fadeInConfiguration: FadeInConfiguration(duration: 2.seconds),
         children: [
           HorizontalList(
             itemCount: episodesChipList.length,
-            padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+            padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
@@ -71,7 +73,7 @@ class _DownloadEpisodesScreenState extends State<DownloadEpisodesScreen> {
                   setState(() {});
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: boxDecorationDefault(
                     borderRadius: radius(20),
                     color: index == selectedEpisodesChipIndex
@@ -93,12 +95,12 @@ class _DownloadEpisodesScreenState extends State<DownloadEpisodesScreen> {
           22.height,
           if (selectedEpisodesChipIndex == 0 ||
               selectedEpisodesChipText == 'Downloaded')
-            DownloadEpisodesListScreen(),
-          if (selectedEpisodesChipText == 'Saved') DownloadEpisodesListScreen(),
+            const DownloadEpisodesListScreen(),
+          if (selectedEpisodesChipText == 'Saved') const DownloadEpisodesListScreen(),
           if (selectedEpisodesChipText == 'Unplayed')
-            DownloadEpisodesListScreen(),
+            const DownloadEpisodesListScreen(),
           if (selectedEpisodesChipText == 'Continue Listening')
-            DownloadEpisodesListScreen(),
+            const DownloadEpisodesListScreen(),
         ],
       ),
     );

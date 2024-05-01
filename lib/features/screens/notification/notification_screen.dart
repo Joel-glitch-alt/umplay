@@ -8,6 +8,8 @@ import 'component/music_notification_list.dart';
 import 'component/podcasts_notification_list.dart';
 
 class NotificationScreen extends StatefulWidget {
+  const NotificationScreen({super.key});
+
   @override
   _NotificationScreenState createState() => _NotificationScreenState();
 }
@@ -39,8 +41,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
     return AppScaffold(
       appBar: commonAppBarWidget(context, title: 'Notifications'),
       body: AnimatedScrollView(
-        padding: EdgeInsets.all(16),
-        physics: AlwaysScrollableScrollPhysics(),
+        padding: const EdgeInsets.all(16),
+        physics: const AlwaysScrollableScrollPhysics(),
         children: [
           Text('The latest releases from artists, and podcasts ...',
               style: secondaryTextStyle()),
@@ -57,7 +59,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   setState(() {});
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: boxDecorationDefault(
                     borderRadius: radius(20),
                     color: index == selectedIndex
@@ -77,8 +79,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
             }),
           ),
           22.height,
-          if (selectedText == 'All') AllNotificationList(),
-          if (selectedText == 'Music') MusicNotificationList(),
+          if (selectedText == 'All') const AllNotificationList(),
+          if (selectedText == 'Music') const MusicNotificationList(),
           if (selectedText == 'Podcasts')
             PodcastsNotificationList(selectedText: selectedText),
         ],

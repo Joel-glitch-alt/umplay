@@ -1,4 +1,4 @@
-import 'package:umplay/core/utils/images.dart';
+import 'package:umplay/core/constants/images.dart';
 
 class DashBoardDataModel {
   String? img;

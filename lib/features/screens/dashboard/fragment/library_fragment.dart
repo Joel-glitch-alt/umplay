@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:umplay/core/constants/sizes.dart';
 
 import '../../../../core/components/app_scaffold.dart';
 import '../../../../core/components/cached_image_widget.dart';
-import '../../../../core/utils/colors.dart';
+import '../../../../core/constants/colors.dart';
 import '../../../../core/utils/common.dart';
-import '../../../../core/utils/constant.dart';
-import '../../../../core/utils/images.dart';
+import '../../../../core/constants/constant.dart';
+import '../../../../core/constants/images.dart';
 import '../../download/download_episodes_screen.dart';
 import '../../download/downloaded_song_screen.dart';
 import '../../library/component/artists_followed_component.dart';
@@ -15,6 +16,8 @@ import '../../notification/notification_screen.dart';
 import '../../search/search_screen.dart';
 
 class LibraryFragment extends StatefulWidget {
+  const LibraryFragment({super.key});
+
   @override
   _LibraryFragmentState createState() => _LibraryFragmentState();
 }
@@ -46,13 +49,13 @@ class _LibraryFragmentState extends State<LibraryFragment> {
         Text('Music', style: secondaryTextStyle(size: 18))
             .paddingSymmetric(horizontal: 16),
         10.height,
-        ArtistsFollowedComponent(),
+        const ArtistsFollowedComponent(),
         10.height,
         SettingItemWidget(
           title: 'Playlists',
           titleTextStyle: primaryTextStyle(),
-          padding: EdgeInsets.all(16),
-          trailing: Icon(Icons.arrow_forward_ios, size: 14),
+          padding: const EdgeInsets.all(16),
+          trailing: const Icon(Icons.arrow_forward_ios, size: 14),
           splashColor: commonSplashColor,
           hoverColor: commonSplashColor,
           onTap: () {
@@ -62,20 +65,20 @@ class _LibraryFragmentState extends State<LibraryFragment> {
         SettingItemWidget(
           title: 'Downloaded Songs',
           titleTextStyle: primaryTextStyle(),
-          padding: EdgeInsets.all(16),
-          trailing: Icon(Icons.arrow_forward_ios, size: 14),
+          padding: const EdgeInsets.all(16),
+          trailing: const Icon(Icons.arrow_forward_ios, size: 14),
           splashColor: commonSplashColor,
           hoverColor: commonSplashColor,
           onTap: () {
-            DownloadedSongListScreen()
+            const DownloadedSongListScreen()
                 .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
           },
         ),
         SettingItemWidget(
           title: 'Albums',
           titleTextStyle: primaryTextStyle(),
-          padding: EdgeInsets.all(16),
-          trailing: Icon(Icons.arrow_forward_ios, size: 14),
+          padding: const EdgeInsets.all(16),
+          trailing: const Icon(Icons.arrow_forward_ios, size: 14),
           splashColor: commonSplashColor,
           hoverColor: commonSplashColor,
           onTap: () {
@@ -98,20 +101,20 @@ class _LibraryFragmentState extends State<LibraryFragment> {
         SettingItemWidget(
           title: 'Downloaded Episodes',
           titleTextStyle: primaryTextStyle(),
-          padding: EdgeInsets.all(16),
-          trailing: Icon(Icons.arrow_forward_ios, size: 14),
+          padding: const EdgeInsets.all(16),
+          trailing: const Icon(Icons.arrow_forward_ios, size: 14),
           splashColor: commonSplashColor,
           hoverColor: commonSplashColor,
           onTap: () {
-            DownloadEpisodesScreen()
+            const DownloadEpisodesScreen()
                 .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
           },
         ),
         SettingItemWidget(
           title: 'New Episodes',
           titleTextStyle: primaryTextStyle(),
-          padding: EdgeInsets.all(16),
-          trailing: Icon(Icons.arrow_forward_ios, size: 14),
+          padding: const EdgeInsets.all(16),
+          trailing: const Icon(Icons.arrow_forward_ios, size: 14),
           splashColor: commonSplashColor,
           hoverColor: commonSplashColor,
           onTap: () {
@@ -145,7 +148,7 @@ class _LibraryFragmentState extends State<LibraryFragment> {
               trailing: Icon(Icons.more_vert, color: textPrimaryColorGlobal)
                   .onTap(() {
                 //
-              }, borderRadius: radius(DEFAULT_RADIUS)),
+              }, borderRadius: radius(USizes.defaultRadius)),
             );
           }),
         ).paddingSymmetric(horizontal: 16),
@@ -165,7 +168,7 @@ class _LibraryFragmentState extends State<LibraryFragment> {
           title: 'Library',
           titleTextStyle: boldTextStyle(color: textPrimaryColorGlobal),
           padding: EdgeInsets.zero,
-          leading: CachedImageWidget(
+          leading: const CachedImageWidget(
             url: img_profile,
             height: 48,
             fit: BoxFit.cover,
@@ -176,19 +179,19 @@ class _LibraryFragmentState extends State<LibraryFragment> {
         actionWidget1: IconButton(
           icon: Image.asset(ic_search, height: 22, width: 22),
           onPressed: () {
-            SearchScreen()
+            const SearchScreen()
                 .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
           },
         ),
         actionWidget2: IconButton(
           icon: Image.asset(ic_notification, height: 22, width: 22),
           onPressed: () {
-            NotificationScreen().launch(context);
+            const NotificationScreen().launch(context);
           },
         ),
       ),
       body: AnimatedScrollView(
-        padding: EdgeInsets.only(bottom: 30),
+        padding: const EdgeInsets.only(bottom: 30),
         children: [
           8.height,
           buildTopWidget(),

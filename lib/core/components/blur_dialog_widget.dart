@@ -2,14 +2,15 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:umplay/core/constants/sizes.dart';
 
-import '../utils/colors.dart';
-import '../utils/constant.dart';
+import '../constants/colors.dart';
+import '../constants/constant.dart';
 
 class BlurDialogWidget extends StatelessWidget {
   final Widget child;
 
-  BlurDialogWidget({required this.child});
+  const BlurDialogWidget({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +19,10 @@ class BlurDialogWidget extends StatelessWidget {
       child: Dialog(
         backgroundColor: Colors.transparent,
         child: ClipRRect(
-          borderRadius: radius(DEFAULT_RADIUS),
+          borderRadius: radius(USizes.defaultRadius),
           child: Container(
             color: dialogBackColor.withOpacity(0.6),
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: child,
           ),
         ),

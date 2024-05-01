@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../utils/colors.dart';
+import '../constants/colors.dart';
 
 class GradientIconWidget extends StatelessWidget {
   final IconData? icon;
   final Color? iconColor;
 
-  GradientIconWidget({this.icon, this.iconColor});
+  const GradientIconWidget({super.key, this.icon, this.iconColor});
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +16,10 @@ class GradientIconWidget extends StatelessWidget {
           colors: [primaryColor, secondaryColor.withRed(260)],
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
-          stops: [0, 0.8],
+          stops: const [0, 0.8],
         ).createShader(bounds);
       },
-      child: Icon(icon != null ? icon : null,
+      child: Icon(icon,
           size: 24, color: iconColor ?? Colors.grey),
     );
   }

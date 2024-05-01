@@ -8,6 +8,8 @@ import '../artists_followed_screen.dart';
 import '../model/artists_followed_list_model.dart';
 
 class ArtistsFollowedComponent extends StatefulWidget {
+  const ArtistsFollowedComponent({super.key});
+
   @override
   _ArtistsFollowedComponentState createState() =>
       _ArtistsFollowedComponentState();
@@ -41,7 +43,7 @@ class _ArtistsFollowedComponentState extends State<ArtistsFollowedComponent> {
           labelSize: 16,
           style: primaryTextStyle(),
           onTap: () {
-            ArtistsFollowedScreen(appBarTitle: 'Artists Followed')
+            const ArtistsFollowedScreen(appBarTitle: 'Artists Followed')
                 .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
           },
         ).paddingSymmetric(horizontal: 16),
@@ -50,7 +52,7 @@ class _ArtistsFollowedComponentState extends State<ArtistsFollowedComponent> {
           itemCount: artistsFollowedList.length,
           spacing: 16,
           runSpacing: 0,
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           itemBuilder: (context, index) {
             ArtistsFollowedListModel artistsFollowedData =
                 artistsFollowedList[index];

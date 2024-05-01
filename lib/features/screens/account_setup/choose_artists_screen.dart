@@ -4,11 +4,13 @@ import 'package:nb_utils/nb_utils.dart';
 import '../../../core/components/app_scaffold.dart';
 import '../../../core/components/cached_image_widget.dart';
 import '../../../core/components/common_app_button.dart';
-import '../../../core/utils/colors.dart';
-import '../../../core/utils/images.dart';
+import '../../../core/constants/colors.dart';
+import '../../../core/constants/images.dart';
 import '../dashboard/dashboard_screen.dart';
 
 class ChooseArtistsScreen extends StatefulWidget {
+  const ChooseArtistsScreen({super.key});
+
   @override
   _ChooseArtistsScreenState createState() => _ChooseArtistsScreenState();
 }
@@ -48,14 +50,14 @@ class _ChooseArtistsScreenState extends State<ChooseArtistsScreen> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      body: Container(
+      body: SizedBox(
         height: context.height(),
         width: context.width(),
         child: Stack(
           children: [
             SingleChildScrollView(
               padding:
-                  EdgeInsets.only(left: 28, right: 16, top: 50, bottom: 100),
+                  const EdgeInsets.only(left: 28, right: 16, top: 50, bottom: 100),
               child: Column(
                 children: [
                   (context.height() * 0.05).toInt().height,
@@ -132,7 +134,7 @@ class _ChooseArtistsScreenState extends State<ChooseArtistsScreen> {
               child: CommonAppButton(
                 btnText: 'Done',
                 onPressed: () {
-                  DashBoardScreen().launch(context,
+                  const DashBoardScreen().launch(context,
                       pageRouteAnimation: PageRouteAnimation.Slide);
                 },
               ),
