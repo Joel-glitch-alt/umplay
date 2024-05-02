@@ -1,6 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:umplay/core/services/auth_service.dart';
+import 'package:umplay/features/auth/data/data_sources/remote/login_api_service.dart';
+import 'package:umplay/features/auth/data/repository/auth_repository.dart';
+import 'package:umplay/features/auth/domain/repository/auth_repository.dart';
+import 'package:umplay/features/auth/domain/usecases/login_usecase.dart';
 import 'package:umplay/features/auth/presentation/controllers/walkthrough_controller.dart';
 
 class AppBinding extends Bindings {
@@ -28,19 +32,20 @@ class AppBinding extends Bindings {
     Get.put(AuthService());
     // Get.put<ConnectivityService>(ConnectivityServiceImpl());
     // Get.put<PermissionService>(PermissionServiceImpl());
-    // Get.put<AuthService>(AuthServiceImpl());
+
     // Get.put(PushNotificationService());
 
-    // Get.put(LoginApiService(Get.find<Dio>()), permanent: true);
+    Get.put(LoginApiService(Get.find<Dio>()), permanent: true);
   }
 
   void injectRepository() {
-    // Get.put<AuthRepository>(AuthRepositoryImpl(Get.find<LoginApiService>()),
-    //     permanent: true);
+    Get.put(AuthRepositoryImpl((Get.find<LoginApiService>())));
+    Get.put<AuthRepository>(AuthRepositoryImpl(Get.find<LoginApiService>()),
+        permanent: true);
   }
 
   void injectUseCase() {
-    // Get.put(LoginUseCase(authRepository: Get.find<AuthRepository>()));
+    Get.put(LoginUseCase(authRepository: Get.find<AuthRepositoryImpl>()));
   }
 
   void injectController() {

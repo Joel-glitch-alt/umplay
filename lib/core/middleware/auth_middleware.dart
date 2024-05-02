@@ -18,8 +18,12 @@ class AuthMiddleware extends GetMiddleware {
     if (kDebugMode) {
       print('middleware');
       print(box.read('IsFirstTime'));
+      print(_authService.accessToken);
     }
-    if (box.read('IsFirstTime') != true) {
+    return null;
+    // return _authService.accessToken.isEmpty ? null : const RouteSettings(name: AppRoutes.home);
+
+    if (box.read('IsFirstTime') == true) {
       return null;
     } else if (_authService.accessToken.isNotEmpty) {
       return const RouteSettings(name: AppRoutes.home);

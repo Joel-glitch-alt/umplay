@@ -23,37 +23,37 @@ class AppPages {
     GetPage(
       name: AppRoutes.initial,
       page: () => const SplashScreen(),
-      middlewares: [
-        AuthMiddleware(),
-      ],
+      // middlewares: [
+      //   AuthMiddleware(),
+      // ],
     ),
     GetPage(
       name: AppRoutes.login,
       page: () => const SignInScreen(),
-      middlewares: [
-        AuthMiddleware(),
-      ],
+      // middlewares: [
+      //   AuthMiddleware(),
+      // ],
     ),
     GetPage(
       name: AppRoutes.register,
       page: () => const SignUpScreen(),
-      middlewares: [
-        AuthMiddleware(),
-      ],
+      // middlewares: [
+      //   AuthMiddleware(),
+      // ],
     ),
     GetPage(
       name: AppRoutes.forgotPassword,
       page: () => const ForgotPasswordScreen(),
-      middlewares: [
-        AuthMiddleware(),
-      ],
+      // middlewares: [
+      //   AuthMiddleware(),
+      // ],
     ),
     GetPage(
       name: AppRoutes.home,
       page: () => const DashBoardScreen(),
-      middlewares: [
-        AuthMiddleware(),
-      ],
+      // middlewares: [
+      //   AuthMiddleware(),
+      // ],
     ),
   ];
 }
