@@ -61,8 +61,8 @@ class _ArtistsFollowedListScreenState extends State<ArtistsFollowedListScreen> {
           hoverColor: lightPurple.withOpacity(0.3),
           onTap: () {
             if (widget.isFromSearch.validate()) hideKeyboard(context);
-            ArtistDetailScreen(artistData: artistsData)
-                .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+            // ArtistDetailScreen(artistData: artistsData)
+            //     .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
           },
           leading: CachedImageWidget(
             url: artistsData.artistImg.validate(),

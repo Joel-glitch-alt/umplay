@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:umplay/features/home/domain/entities/artist_entity.dart';
+import 'package:umplay/features/home/presentation/controllers/artist_controller.dart';
 
 import '../../../../core/components/cached_image_widget.dart';
 import '../../../../core/components/view_all_label_component.dart';
@@ -19,11 +21,13 @@ class TopArtistsComponent extends StatefulWidget {
 
 class _TopArtistsComponentState extends State<TopArtistsComponent> {
   List<ArtistsFollowedListModel> artistsFollowedList = getArtistsFollowedList();
+  final controller = Get.find<ArtistController>();
 
   @override
   void initState() {
     super.initState();
     init();
+    controller.getAllArtists(null);
   }
 
   void init() async {
@@ -53,13 +57,13 @@ class _TopArtistsComponentState extends State<TopArtistsComponent> {
         ).paddingSymmetric(horizontal: 16),
         12.height,
         HorizontalList(
-          itemCount: artistsFollowedList.length,
+          itemCount: controller.artists.length,
           spacing: 16,
           runSpacing: 0,
           padding: const EdgeInsets.symmetric(horizontal: 16),
           itemBuilder: (context, index) {
-            ArtistsFollowedListModel artistsFollowedListData =
-                artistsFollowedList[index];
+            ArtistEntity artistsFollowedListData =
+                controller.artists.value[index];
             return GestureDetector(
               onTap: () {
                 ArtistDetailScreen(artistData: artistsFollowedListData).launch(
@@ -70,7 +74,7 @@ class _TopArtistsComponentState extends State<TopArtistsComponent> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CachedImageWidget(
-                    url: artistsFollowedListData.artistImg.validate(),
+                    url: 'https://source.unsplash.com/random/?artist,music',
                     height: 80,
                     fit: BoxFit.cover,
                     width: 80,
@@ -80,7 +84,7 @@ class _TopArtistsComponentState extends State<TopArtistsComponent> {
                     width: 78,
                     child: Marquee(
                       child: Text(
-                        artistsFollowedListData.artistName
+                        artistsFollowedListData.fullName
                             .capitalizeFirstLetter(),
                         style: primaryTextStyle(
                             size: 14, color: textPrimaryColorGlobal),

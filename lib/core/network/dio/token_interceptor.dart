@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:umplay/core/services/auth_service.dart';
 
 class TokenInterceptor extends Interceptor {
-  final AuthService _authService = Get.find<AuthService>();
+  final AuthService _authService = Get.put<AuthService>(AuthService());
 
   TokenInterceptor({required Dio dio});
 
@@ -15,5 +15,4 @@ class TokenInterceptor extends Interceptor {
     }
     return handler.next(options);
   }
-
 }

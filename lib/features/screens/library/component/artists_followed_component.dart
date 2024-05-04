@@ -63,9 +63,9 @@ class _ArtistsFollowedComponentState extends State<ArtistsFollowedComponent> {
               width: 70,
               radius: 80,
             ).onTap(() {
-              ArtistDetailScreen(artistData: artistsFollowedData).launch(
-                  context,
-                  pageRouteAnimation: PageRouteAnimation.Slide);
+              //   ArtistDetailScreen(artistData: artistsFollowedData).launch(
+              //       context,
+              //       pageRouteAnimation: PageRouteAnimation.Slide);
             });
           },
         )

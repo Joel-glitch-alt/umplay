@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:umplay/core/constants/sizes.dart';
+import 'package:umplay/features/home/domain/entities/artist_entity.dart';
 
 import '../../../core/components/app_scaffold.dart';
 import '../../../core/components/cached_image_widget.dart';
@@ -13,7 +16,7 @@ import '../../../core/constants/images.dart';
 import 'model/artists_followed_list_model.dart';
 
 class ArtistDetailScreen extends StatefulWidget {
-  final ArtistsFollowedListModel? artistData;
+  final ArtistEntity? artistData;
 
   const ArtistDetailScreen({super.key, this.artistData});
 
@@ -47,7 +50,7 @@ class _ArtistDetailScreenState extends State<ArtistDetailScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CachedImageWidget(
-                url: widget.artistData!.artistImg.validate(),
+                url: 'https://source.unsplash.com/random/?artist',
                 height: 130,
                 width: context.width(),
                 fit: BoxFit.cover,
@@ -61,7 +64,7 @@ class _ArtistDetailScreenState extends State<ArtistDetailScreen> {
                     children: [
                       Marquee(
                         child: Text(
-                          widget.artistData!.artistName.validate(),
+                          widget.artistData!.fullName.validate(),
                           style: boldTextStyle(),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
@@ -82,16 +85,15 @@ class _ArtistDetailScreenState extends State<ArtistDetailScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Marquee(
-                          child: Text(widget.artistData!.noOfLikes.validate(),
+                          child: Text(
+                              widget.artistData!.totalLikes
+                                  .toString()
+                                  .validate(),
                               style: secondaryTextStyle())),
                       InkWell(
-                        onTap: () {
-                          widget.artistData!.isLike =
-                              !widget.artistData!.isLike.validate();
-                          setState(() {});
-                        },
+                        onTap: () {},
                         splashColor: Colors.transparent,
-                        child: widget.artistData!.isLike.validate()
+                        child: Random().nextBool() // TODO : Remove this
                             ? const GradientIconWidget(icon: Icons.favorite)
                             : const Icon(Icons.favorite,
                                 size: 24, color: Colors.grey),
@@ -105,14 +107,13 @@ class _ArtistDetailScreenState extends State<ArtistDetailScreen> {
           16.height,
           CommonAppButton(
             onPressed: () {
-              widget.artistData!.isFollow =
-                  !widget.artistData!.isFollow.validate();
-              setState(() {});
+              // widget.artistData!.isFollow =
+              //     !widget.artistData!.isFollow.validate();
+              // setState(() {});
             },
-            btnText:
-                widget.artistData!.isFollow == true ? 'Following' : 'Follow',
+            btnText: Random().nextBool() == true ? 'Following' : 'Follow',
             width: context.width() * 0.3,
-            gradient: widget.artistData!.isFollow == true
+            gradient: Random().nextBool()
                 ? null
                 : primaryHomeLinearGradient(
                     firstColor: Colors.grey, secondColor: Colors.grey),
@@ -123,7 +124,7 @@ class _ArtistDetailScreenState extends State<ArtistDetailScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CachedImageWidget(
-                url: widget.artistData!.artistImg.validate(),
+                url: 'https://source.unsplash.com/random/?singer',
                 height: 130,
                 width: context.width(),
                 fit: BoxFit.cover,
@@ -137,7 +138,7 @@ class _ArtistDetailScreenState extends State<ArtistDetailScreen> {
                     children: [
                       Marquee(
                         child: Text(
-                          widget.artistData!.artistName.validate(),
+                          widget.artistData!.fullName.validate(),
                           style: boldTextStyle(),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
@@ -158,16 +159,23 @@ class _ArtistDetailScreenState extends State<ArtistDetailScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Marquee(
-                          child: Text(widget.artistData!.noOfLikes.validate(),
+                          child: Text(
+                              widget.artistData!.totalLikes
+                                  .toString()
+                                  .validate(),
                               style: secondaryTextStyle())),
                       InkWell(
-                        onTap: () {
-                          widget.artistData!.isLike =
-                              !widget.artistData!.isLike.validate();
-                          setState(() {});
-                        },
+                        // onTap: () {
+                        //   Random().nextBool() =
+                        //       !widget.artistData!.isLike.validate();
+                        //   setState(() {});
+                        // },
                         splashColor: Colors.transparent,
-                        child: widget.artistData!.isLike.validate()
+                        child: widget.artistData!.totalLikes
+                                    .toString()
+                                    .validate()
+                                    .toInt() >
+                                0
                             ? const GradientIconWidget(icon: Icons.favorite)
                             : const Icon(Icons.favorite,
                                 size: 24, color: Colors.grey),

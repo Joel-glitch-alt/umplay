@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:umplay/core/middleware/auth_middleware.dart';
 import 'package:umplay/core/routes/app_routes.dart';
 import 'package:umplay/features/auth/presentation/screens/forgot_password_screen.dart';
 import 'package:umplay/features/auth/presentation/screens/sign_in/sign_in_screen.dart';
@@ -51,6 +50,7 @@ class AppPages {
     GetPage(
       name: AppRoutes.home,
       page: () => const DashBoardScreen(),
+      // binding: ArtistBinding()
       // middlewares: [
       //   AuthMiddleware(),
       // ],

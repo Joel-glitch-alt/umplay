@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:umplay/core/components/full_screen_loader.dart';
 import 'package:umplay/core/components/loaders.dart';
 import 'package:umplay/core/resources/data_state.dart';
 import 'package:umplay/features/auth/data/models/login_request.dart';
@@ -21,29 +22,35 @@ class LoginController extends GetxController {
   FocusNode passwordFocus = FocusNode();
 
   Future<void> login() async {
-    final dataState = await loginUsecaseInstance.call(LoginRequestModel(
-        phone: phoneController.value.text,
-        password: passwordController.value.text));
+    try {
+      FullScreenLoader.openLoadingDialog('Loading...', 'animation');
+      final dataState = await loginUsecaseInstance.call(LoginRequestModel(
+          phone: phoneController.value.text,
+          password: passwordController.value.text));
 
-    if (dataState is DataSuccess) {
-      Map<String, dynamic> decodedToken =
-          JwtDecoder.decode(dataState.data!.token as String);
-      final TokenUser tokenUser = TokenUser.fromJson(decodedToken);
-      final deviceStorage = GetStorage();
+      if (dataState is DataSuccess) {
+        Map<String, dynamic> decodedToken =
+            JwtDecoder.decode(dataState.data!.token as String);
+        final TokenUser tokenUser = TokenUser.fromJson(decodedToken);
+        final deviceStorage = GetStorage();
 
-      deviceStorage.write('token', dataState.data!.token);
-      deviceStorage.write('tokenUser', tokenUser.toJson());
-      Loaders.showSuccess(title: 'Login successfull', message: '');
-      Get.off(const DashBoardScreen());
-      if (kDebugMode) {
-        print(decodedToken);
+        deviceStorage.write('token', dataState.data!.token);
+        deviceStorage.write('tokenUser', tokenUser.toJson());
+        Loaders.showSuccess(title: 'Login successfull', message: '');
+        Get.off(const DashBoardScreen());
+        if (kDebugMode) {
+          print(decodedToken);
+        }
+      } else if (dataState is DataFailed) {
+        if (kDebugMode) {
+          print(dataState.data);
+          Loaders.showError(
+              title: 'Something went wrong',
+              message: dataState.error.toString());
+        }
       }
-    } else if (dataState is DataFailed) {
-      if (kDebugMode) {
-        print(dataState.data);
-        Loaders.showError(
-            title: 'Something went wrong', message: dataState.error.toString());
-      }
+    } finally {
+      FullScreenLoader.stopLoadingDialog();
     }
   }
 }
