@@ -1,3 +1,5 @@
+import 'package:cloudinary_flutter/cloudinary_context.dart';
+import 'package:cloudinary_flutter/cloudinary_object.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
@@ -18,6 +20,8 @@ Future<void> main() async {
   final widgetBinded = WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
   FlutterNativeSplash.preserve(widgetsBinding: widgetBinded);
+
+  CloudinaryObject.fromCloudName(cloudName: 'dexc98myq');
 
   await AppBinding().dependencies();
 

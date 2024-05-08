@@ -19,4 +19,9 @@ abstract class Restclient {
   @Headers({'Content-Type': 'application/json'})
   @GET(Endpoints.getArtistByIdUrl)
   Future<HttpResponse<ArtistModel>> getArtist(@Path('id') String id);
+
+  //media
+  @Headers({'Content-Type': 'application/json'})
+  @GET(Endpoints.getAllTrendingVideos)
+  Future<HttpResponse<dynamic>> getTrendingVideos();
 }

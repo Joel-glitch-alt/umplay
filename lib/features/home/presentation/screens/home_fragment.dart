@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:umplay/features/home/presentation/controllers/artist_controller.dart';
 
 import '../../../../core/components/app_scaffold.dart';
-import '../../../../core/utils/common.dart';
 import '../../../../core/constants/images.dart';
-import '../../../screens/notification/notification_screen.dart';
-import '../../../screens/search/search_screen.dart';
-import '../../../screens/dashboard/component/top_artists_component.dart';
+import '../../../../core/utils/common.dart';
 import '../../../screens/dashboard/component/fan_base_trending_videos_component.dart';
 import '../../../screens/dashboard/component/my_artist.dart';
+import '../../../screens/dashboard/component/top_artists_component.dart';
+import '../../../screens/notification/notification_screen.dart';
+import '../../../screens/search/search_screen.dart';
 
 class HomeFragment extends StatefulWidget {
   const HomeFragment({super.key});

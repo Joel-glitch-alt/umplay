@@ -27,7 +27,6 @@ class _TopArtistsComponentState extends State<TopArtistsComponent> {
   void initState() {
     super.initState();
     init();
-    controller.getAllArtists(null);
   }
 
   void init() async {
@@ -56,47 +55,52 @@ class _TopArtistsComponentState extends State<TopArtistsComponent> {
           },
         ).paddingSymmetric(horizontal: 16),
         12.height,
-        HorizontalList(
-          itemCount: controller.artists.length,
-          spacing: 16,
-          runSpacing: 0,
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          itemBuilder: (context, index) {
-            ArtistEntity artistsFollowedListData =
-                controller.artists.value[index];
-            return GestureDetector(
-              onTap: () {
-                ArtistDetailScreen(artistData: artistsFollowedListData).launch(
-                    context,
-                    pageRouteAnimation: PageRouteAnimation.Slide);
-              },
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CachedImageWidget(
-                    url: 'https://source.unsplash.com/random/?artist,music',
-                    height: 80,
-                    fit: BoxFit.cover,
-                    width: 80,
-                    radius: widget.radius ?? 100,
-                  ),
-                  SizedBox(
-                    width: 78,
-                    child: Marquee(
-                      child: Text(
-                        artistsFollowedListData.fullName
-                            .capitalizeFirstLetter(),
-                        style: primaryTextStyle(
-                            size: 14, color: textPrimaryColorGlobal),
-                        textAlign: TextAlign.start,
-                        overflow: TextOverflow.ellipsis,
+        Obx(
+          () => controller.isLoading.value
+              ? const CircularProgressIndicator()
+              : HorizontalList(
+                  itemCount: controller.artists.length,
+                  spacing: 16,
+                  runSpacing: 0,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  itemBuilder: (context, index) {
+                    ArtistEntity artistsFollowedListData =
+                        controller.artists[index];
+                    return GestureDetector(
+                      onTap: () {
+                        ArtistDetailScreen(artistData: artistsFollowedListData)
+                            .launch(context,
+                                pageRouteAnimation: PageRouteAnimation.Slide);
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CachedImageWidget(
+                            url:
+                                'https://source.unsplash.com/random/?artist,music',
+                            height: 80,
+                            fit: BoxFit.cover,
+                            width: 80,
+                            radius: widget.radius ?? 100,
+                          ),
+                          SizedBox(
+                            width: 78,
+                            child: Marquee(
+                              child: Text(
+                                artistsFollowedListData.fullName
+                                    .capitalizeFirstLetter(),
+                                style: primaryTextStyle(
+                                    size: 14, color: textPrimaryColorGlobal),
+                                textAlign: TextAlign.start,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ).center(),
+                          ).paddingTop(8)
+                        ],
                       ),
-                    ).center(),
-                  ).paddingTop(8)
-                ],
-              ),
-            );
-          },
+                    );
+                  },
+                ),
         )
       ],
     );

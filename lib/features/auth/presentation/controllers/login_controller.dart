@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:umplay/core/components/full_screen_loader.dart';
 import 'package:umplay/core/components/loaders.dart';
 import 'package:umplay/core/resources/data_state.dart';
 import 'package:umplay/features/auth/data/models/login_request.dart';
@@ -20,10 +19,11 @@ class LoginController extends GetxController {
 
   FocusNode emailFocus = FocusNode();
   FocusNode passwordFocus = FocusNode();
+  RxBool isLoading = false.obs;
 
   Future<void> login() async {
     try {
-      FullScreenLoader.openLoadingDialog('Loading...', 'animation');
+      isLoading.value = true;
       final dataState = await loginUsecaseInstance.call(LoginRequestModel(
           phone: phoneController.value.text,
           password: passwordController.value.text));
@@ -36,7 +36,9 @@ class LoginController extends GetxController {
 
         deviceStorage.write('token', dataState.data!.token);
         deviceStorage.write('tokenUser', tokenUser.toJson());
+        isLoading.value = false;
         Loaders.showSuccess(title: 'Login successfull', message: '');
+
         Get.off(const DashBoardScreen());
         if (kDebugMode) {
           print(decodedToken);
@@ -44,13 +46,16 @@ class LoginController extends GetxController {
       } else if (dataState is DataFailed) {
         if (kDebugMode) {
           print(dataState.data);
+          isLoading.value = false;
           Loaders.showError(
               title: 'Something went wrong',
               message: dataState.error.toString());
         }
       }
+    } catch (e) {
+      isLoading.value = false;
     } finally {
-      FullScreenLoader.stopLoadingDialog();
+      isLoading.value = false;
     }
   }
 }

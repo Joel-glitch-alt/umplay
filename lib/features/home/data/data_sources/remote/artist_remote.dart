@@ -1,15 +1,6 @@
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:dio/dio.dart' hide Headers;
-import 'package:flutter/foundation.dart';
 import 'package:retrofit/retrofit.dart';
-
-import 'package:umplay/core/constants/endpoints.dart';
 import 'package:umplay/core/network/rest_client.dart';
-import 'package:umplay/core/resources/data_state.dart';
 import 'package:umplay/features/home/data/models/artist_model.dart';
-import 'package:umplay/features/home/domain/entities/artist_entity.dart';
 
 abstract class ArtistRemoteDataSource {
   Future<HttpResponse<List<ArtistModel>>> getAllArtists();

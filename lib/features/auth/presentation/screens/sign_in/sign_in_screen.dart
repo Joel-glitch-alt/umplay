@@ -5,7 +5,6 @@ import 'package:umplay/core/components/app_scaffold.dart';
 import 'package:umplay/core/components/common_app_button.dart';
 import 'package:umplay/core/components/gradient_text_widget.dart';
 import 'package:umplay/core/constants/image_constants.dart';
-
 import 'package:umplay/core/constants/text_constants.dart';
 import 'package:umplay/core/routes/app_pages.dart';
 import 'package:umplay/core/utils/common.dart';
@@ -13,7 +12,6 @@ import 'package:umplay/core/utils/validators/validator.dart';
 import 'package:umplay/features/auth/presentation/controllers/login_controller.dart';
 
 import 'package:nb_utils/nb_utils.dart';
-import 'package:umplay/features/auth/presentation/screens/forgot_password_screen.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -83,28 +81,21 @@ class SignInScreen extends StatelessWidget {
             ),
             Column(
               children: [
-                CommonAppButton(
-                  btnText: UTexts.loginButton,
-                  onPressed: () {
-                    hideKeyboard(context);
-                    // Get.dialog(
-                    //   AlertDialog(
-                    //     title: const Text('Dialog'),
-                    //     content: const Text('This is a dialog'),
-                    //     actions: [
-                    //       TextButton(
-                    //         child: const Text("Close"),
-                    //         onPressed: () => Get.back(),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // );
-                    // Get.snackbar('login pressed', 'login in');
-                    if (_loginFormKkey.currentState!.validate() == false) {
-                      return;
-                    }
-                    controller.login();
-                  },
+                Obx(
+                  () => controller.isLoading.value
+                      ? const CircularProgressIndicator()
+                      : CommonAppButton(
+                          btnText: UTexts.loginButton,
+                          onPressed: () {
+                            hideKeyboard(context);
+                            if (_loginFormKkey.currentState!.validate() ==
+                                false) {
+                              return;
+                            }
+
+                            controller.login();
+                          },
+                        ),
                 ),
                 20.height,
                 TextButton(
