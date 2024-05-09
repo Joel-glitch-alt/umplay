@@ -10,36 +10,13 @@ import '../../library/artist_detail_screen.dart';
 import '../../library/artists_followed_screen.dart';
 import '../../library/model/artists_followed_list_model.dart';
 
-class TopArtistsComponent extends StatefulWidget {
-  final double? radius;
-
+class TopArtistsComponent extends StatelessWidget {
   const TopArtistsComponent({super.key, this.radius});
-
-  @override
-  _TopArtistsComponentState createState() => _TopArtistsComponentState();
-}
-
-class _TopArtistsComponentState extends State<TopArtistsComponent> {
-  List<ArtistsFollowedListModel> artistsFollowedList = getArtistsFollowedList();
-  final controller = Get.find<ArtistController>();
-
-  @override
-  void initState() {
-    super.initState();
-    init();
-  }
-
-  void init() async {
-    //
-  }
-
-  @override
-  void setState(fn) {
-    if (mounted) super.setState(fn);
-  }
+  final double? radius;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ArtistController());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -68,9 +45,11 @@ class _TopArtistsComponentState extends State<TopArtistsComponent> {
                         controller.artists[index];
                     return GestureDetector(
                       onTap: () {
-                        ArtistDetailScreen(artistData: artistsFollowedListData)
-                            .launch(context,
-                                pageRouteAnimation: PageRouteAnimation.Slide);
+                        Get.to(
+                            () => ArtistDetailScreen(
+                                  artistData: artistsFollowedListData,
+                                ),
+                            transition: Transition.upToDown);
                       },
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,7 +60,7 @@ class _TopArtistsComponentState extends State<TopArtistsComponent> {
                             height: 80,
                             fit: BoxFit.cover,
                             width: 80,
-                            radius: widget.radius ?? 100,
+                            radius: radius ?? 100,
                           ),
                           SizedBox(
                             width: 78,

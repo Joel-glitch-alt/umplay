@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:umplay/core/constants/colors_constants.dart';
+import 'package:umplay/core/constants/sizes.dart';
+import 'package:umplay/core/utils/device/device_utils.dart';
 
 import '../../../core/components/app_scaffold.dart';
 import '../../../core/components/icon_background_widget.dart';
@@ -10,113 +15,60 @@ import 'fragment/music_fragment.dart';
 import 'fragment/podcasts_fragment.dart';
 import 'fragment/setting_fragment.dart';
 
-class DashBoardScreen extends StatefulWidget {
+class DashBoardScreen extends StatelessWidget {
   const DashBoardScreen({super.key});
 
   @override
-  _DashBoardScreenState createState() => _DashBoardScreenState();
+  Widget build(BuildContext context) {
+    final controller = Get.put(NavigationController());
+    final isDarkMode = UDeviceUtils.isDarkMode(context);
+
+    return Scaffold(
+        bottomNavigationBar: Obx(
+          () => NavigationBar(
+            height: USizes.bottomBarHeight,
+            elevation: 0,
+            selectedIndex: controller.selectedIndex.value,
+            backgroundColor: isDarkMode ? UColors.black : UColors.white,
+            indicatorColor: isDarkMode
+                ? UColors.white.withOpacity(0.1)
+                : UColors.black.withOpacity(0.1),
+            onDestinationSelected: (index) =>
+                {controller.selectedIndex.value = index},
+            destinations: const [
+              NavigationDestination(
+                icon: Icon(Iconsax.home4),
+                label: 'Home',
+              ),
+              NavigationDestination(
+                icon: Icon(Iconsax.people),
+                label: 'Contestants',
+              ),
+              NavigationDestination(
+                icon: Icon(Iconsax.safe_home),
+                label: 'Collections',
+              ),
+              NavigationDestination(
+                icon: Icon(Iconsax.gift),
+                label: 'Rewards',
+              ),
+            ],
+          ),
+        ),
+        body: Obx(
+          () => controller.screens[controller.selectedIndex.value],
+        ));
+  }
 }
 
-class _DashBoardScreenState extends State<DashBoardScreen> {
-  int _selectedItemIndex = 2;
+class NavigationController extends GetxController {
+  final Rx<int> selectedIndex = 0.obs;
 
-  List<Widget> _pages = [];
-
-  @override
-  void initState() {
-    super.initState();
-    init();
-  }
-
-  void init() async {
-    _pages = [
-      const MusicFragment(),
-      const PodcastsFragment(),
-      const HomeFragment(),
-      const LibraryFragment(),
-      const SettingFragment(),
-    ];
-
-    setState(() {});
-  }
-
-  @override
-  void setState(fn) {
-    if (mounted) super.setState(fn);
-  }
-
-  void _onTap(int index) {
-    _selectedItemIndex = index;
-    setState(() {});
-  }
-
-  Widget customBottomNav(BuildContext context, bool isActiveIcon, String icon) {
-    if (isActiveIcon) {
-      return IconBackgroundWidget(
-          icon: icon,
-          height: 22,
-          width: 22,
-          padding: 8,
-          iconColor: Colors.white,
-          color: Colors.grey.withAlpha(80));
-    } else {
-      return Image.asset(icon, height: 22, width: 22, color: Colors.white);
-    }
-  }
-
-  Widget _bottomTab() {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: primaryHomeLinearGradient(),
-        boxShadow: const [
-          BoxShadow(spreadRadius: 0, color: Colors.transparent)
-        ],
-      ),
-      child: BottomNavigationBar(
-        currentIndex: _selectedItemIndex,
-        onTap: _onTap,
-        elevation: 0,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.black.withOpacity(0.68),
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        selectedFontSize: 0,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: customBottomNav(context, false, ic_music),
-            activeIcon: customBottomNav(context, true, ic_music),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: customBottomNav(context, false, ic_headphones),
-            activeIcon: customBottomNav(context, true, ic_headphones),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: customBottomNav(context, false, ic_home),
-            activeIcon: customBottomNav(context, true, ic_home),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: customBottomNav(context, false, ic_queue_music),
-            activeIcon: customBottomNav(context, true, ic_queue_music),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: customBottomNav(context, false, ic_setting),
-            activeIcon: customBottomNav(context, true, ic_setting),
-            label: '',
-          ),
-        ],
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AppScaffold(
-      bottomNavigationBar: _bottomTab(),
-      body: _pages[_selectedItemIndex],
-    );
-  }
+  final screens = [
+    const HomeFragment(),
+    const PodcastsFragment(),
+    const MusicFragment(),
+    const LibraryFragment(),
+    const SettingFragment(),
+  ];
 }

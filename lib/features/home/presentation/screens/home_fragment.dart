@@ -10,28 +10,8 @@ import '../../../screens/dashboard/component/top_artists_component.dart';
 import '../../../screens/notification/notification_screen.dart';
 import '../../../screens/search/search_screen.dart';
 
-class HomeFragment extends StatefulWidget {
+class HomeFragment extends StatelessWidget {
   const HomeFragment({super.key});
-
-  @override
-  _HomeFragmentState createState() => _HomeFragmentState();
-}
-
-class _HomeFragmentState extends State<HomeFragment> {
-  @override
-  void initState() {
-    super.initState();
-    init();
-  }
-
-  void init() async {
-    //
-  }
-
-  @override
-  void setState(fn) {
-    if (mounted) super.setState(fn);
-  }
 
   @override
   Widget build(BuildContext context) {
