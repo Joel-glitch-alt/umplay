@@ -8,8 +8,8 @@ import 'package:umplay/features/home/domain/entities/artist_entity.dart';
 part 'rest_client.g.dart';
 
 @RestApi(baseUrl: Endpoints.baseUrl)
-abstract class Restclient {
-  factory Restclient(Dio dio, {String baseUrl}) = _Restclient;
+abstract class RestClient {
+  factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
   //artiste
   @Headers({'Content-Type': 'application/json'})
@@ -24,4 +24,9 @@ abstract class Restclient {
   @Headers({'Content-Type': 'application/json'})
   @GET(Endpoints.getAllTrendingVideos)
   Future<HttpResponse<dynamic>> getTrendingVideos();
+
+  //regions
+  @Headers({'Content-Type': 'application/json'})
+  @GET(Endpoints.getAllArtistsByRegions)
+  Future<HttpResponse<dynamic>> getAllArtistsByRegions();
 }

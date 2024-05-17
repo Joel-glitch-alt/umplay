@@ -8,7 +8,6 @@ import '../../../../core/components/cached_image_widget.dart';
 import '../../../../core/components/view_all_label_component.dart';
 import '../../library/artist_detail_screen.dart';
 import '../../library/artists_followed_screen.dart';
-import '../../library/model/artists_followed_list_model.dart';
 
 class TopArtistsComponent extends StatelessWidget {
   const TopArtistsComponent({super.key, this.radius});

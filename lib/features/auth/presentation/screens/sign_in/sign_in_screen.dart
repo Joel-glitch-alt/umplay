@@ -24,7 +24,7 @@ class SignInScreen extends StatelessWidget {
     GlobalKey<FormState> _loginFormKkey = GlobalKey<FormState>();
 
     return AppScaffold(
-      appBar: commonAppBarWidget(context, title: ''),
+      appBar: commonAppBarWidget(context, title: '', showBack: false),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(

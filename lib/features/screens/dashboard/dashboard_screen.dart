@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:umplay/core/constants/colors_constants.dart';
 import 'package:umplay/core/constants/sizes.dart';
 import 'package:umplay/core/utils/device/device_utils.dart';
+import 'package:umplay/features/contestants/presentation/screens/contestants_fragment.dart';
 
 import '../../../core/components/app_scaffold.dart';
 import '../../../core/components/icon_background_widget.dart';
@@ -12,7 +13,6 @@ import '../../../core/constants/images.dart';
 import '../../home/presentation/screens/home_fragment.dart';
 import 'fragment/library_fragment.dart';
 import 'fragment/music_fragment.dart';
-import 'fragment/podcasts_fragment.dart';
 import 'fragment/setting_fragment.dart';
 
 class DashBoardScreen extends StatelessWidget {
@@ -66,7 +66,7 @@ class NavigationController extends GetxController {
 
   final screens = [
     const HomeFragment(),
-    const PodcastsFragment(),
+    const ContestantsFragment(),
     const MusicFragment(),
     const LibraryFragment(),
     const SettingFragment(),

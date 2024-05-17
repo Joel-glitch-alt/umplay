@@ -25,6 +25,7 @@ class ArtistController extends GetxController {
 
   Future<DataState<List<ArtistEntity>>> getAllArtists(params) async {
     isLoading.value = true;
+
     final dataState = await getArtistsUseCase.call(null);
     if (dataState is DataSuccess) {
       artists.assignAll(dataState.data!);
@@ -43,5 +44,12 @@ class ArtistController extends GetxController {
       return DataFailed(
           dataState.error!); // Return an error state for unknown errors
     }
+  }
+
+  @override
+  void dispose() {
+    artists.clear();
+    isLoading.value = false;
+    debugPrint('dispose');
   }
 }

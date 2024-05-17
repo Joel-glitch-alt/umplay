@@ -7,7 +7,7 @@ abstract class MediaRemoteDataSource {
 }
 
 class MediaRemoteDataSourceImpl implements MediaRemoteDataSource {
-  Restclient restClient;
+  RestClient restClient;
 
   MediaRemoteDataSourceImpl(
     this.restClient,

@@ -6,4 +6,6 @@ class Endpoints {
   static const String getArtistByIdUrl = "$baseUrl/account/users";
   static const String getAllTrendingVideos =
       "$baseUrl/media/fetch-trending_videos";
+
+  static const String getAllArtistsByRegions = "$baseUrl/account/region";
 }

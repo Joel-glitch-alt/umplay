@@ -12,6 +12,7 @@ import 'package:umplay/core/routes/app_pages.dart';
 import 'package:umplay/core/routes/app_routes.dart';
 import 'package:umplay/features/auth/presentation/screens/splash_screen.dart';
 import 'package:umplay/core/store/app_store.dart';
+import 'package:umplay/features/screens/library/artist_detail_screen.dart';
 
 // APP STORE
 AppStore appStore = AppStore();
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
       initialBinding: AppBinding(),
       initialRoute: AppRoutes.initial,
       getPages: AppPages.pages,
-      home: const SplashScreen(),
+      home: const ArtistDetailScreen(),
     );
   }
 }

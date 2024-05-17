@@ -178,7 +178,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     const SignInScreen().launch(context,
                         pageRouteAnimation: PageRouteAnimation.Slide);
                   },
-                  child: const GradientTextWidget(text: 'Sign in'),
+                  child: const GradientTextWidget(text: 'Log In'),
                 ),
               ],
             ),

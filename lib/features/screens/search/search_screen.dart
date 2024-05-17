@@ -10,7 +10,7 @@ import '../../../core/utils/common.dart';
 import '../../../core/constants/images.dart';
 import '../dashboard/fragment/artists_fragment.dart';
 import '../dashboard/fragment/music_fragment.dart';
-import '../dashboard/fragment/podcasts_fragment.dart';
+import '../../contestants/presentation/screens/contestants_fragment.dart';
 import 'component/search_component.dart';
 import 'model/search_data_model.dart';
 
@@ -146,12 +146,12 @@ class _SearchScreenState extends State<SearchScreen> {
                           const MusicFragment().launch(context,
                               pageRouteAnimation: PageRouteAnimation.Slide);
                         else
-                          const PodcastsFragment().launch(context,
+                          const ContestantsFragment().launch(context,
                               pageRouteAnimation: PageRouteAnimation.Slide);
                       },
                       child: Container(
-                        padding:
-                            const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8),
                         decoration: boxDecorationDefault(
                           borderRadius: radius(20),
                           color: Colors.grey.withAlpha(25),

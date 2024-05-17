@@ -1,10 +1,5 @@
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:dio/dio.dart';
 import 'package:umplay/core/resources/data_state.dart';
 import 'package:umplay/features/home/data/data_sources/remote/artist_remote.dart';
-import 'package:umplay/features/home/data/models/artist_model.dart';
 import 'package:umplay/features/home/domain/entities/artist_entity.dart';
 import 'package:umplay/features/home/domain/repository/artitst_repository.dart';
 
@@ -16,6 +11,7 @@ class ArtistRepositoryImpl implements ArtistRepository {
   @override
   Future<DataState<List<ArtistEntity>>> getAllArtists() async {
     final response = await artistRemoteDataSourceImpl.getAllArtists();
+    print(response);
     return DataSuccess(response.data);
   }
 

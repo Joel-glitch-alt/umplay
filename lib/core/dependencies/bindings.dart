@@ -9,6 +9,10 @@ import 'package:umplay/features/auth/domain/usecases/login_usecase.dart';
 import 'package:umplay/features/auth/presentation/controllers/walkthrough_controller.dart';
 import 'package:umplay/core/constants/endpoints.dart';
 import 'package:umplay/core/network/dio_client.dart';
+import 'package:umplay/features/common/data/data_sources/remote/region_remote_data_source.dart';
+import 'package:umplay/features/common/data/repository/region_repository_impl.dart';
+import 'package:umplay/features/common/domain/repository/region_repository.dart';
+import 'package:umplay/features/common/domain/usecases/get_artists_by_regions_usecase.dart';
 import 'package:umplay/features/home/data/data_sources/remote/artist_remote.dart';
 import 'package:umplay/features/home/data/repository/artist_repository_impl.dart';
 import 'package:umplay/features/home/domain/repository/artitst_repository.dart';
@@ -16,6 +20,8 @@ import 'package:umplay/features/home/domain/usecases/get_artists_usecase.dart';
 import 'package:umplay/features/home/presentation/controllers/artist_controller.dart';
 
 class AppBinding extends Bindings {
+  final dio = buildDioOptions(Endpoints.baseUrl);
+
   @override
   Future<void> dependencies() async {
     injectStorageProvider();
@@ -33,9 +39,8 @@ class AppBinding extends Bindings {
   }
 
   void injectNetworkProvider() {
-    final dio = buildDioOptions(Endpoints.baseUrl);
     Get.put<Dio>(Dio());
-    Get.put<Restclient>(Restclient(dio));
+    Get.put<RestClient>(RestClient(dio));
     // Get.put<DioClient>(DioClient(Endpoints.baseUrl));
   }
 
@@ -51,7 +56,11 @@ class AppBinding extends Bindings {
     // Get.put(ArtistRemoteDataSource(Get.find<Dio>(), Endpoints.baseUrl),
     // permanent: true);
     Get.put<ArtistRemoteDataSourceImpl>(
-        ArtistRemoteDataSourceImpl(Restclient(Get.find<Dio>())),
+        ArtistRemoteDataSourceImpl(RestClient(dio)),
+        permanent: true);
+
+    Get.put<RegionRemoteDataSourceImpl>(
+        RegionRemoteDataSourceImpl(restClient: RestClient(dio)),
         permanent: true);
   }
 
@@ -62,11 +71,15 @@ class AppBinding extends Bindings {
 
     Get.put<ArtistRepository>(
         ArtistRepositoryImpl(Get.find<ArtistRemoteDataSourceImpl>()));
+    Get.put<RegionRepository>(RegionRepositoryImpl(
+        regionRemoteDataSourceImpl: Get.find<RegionRemoteDataSourceImpl>()));
   }
 
   void injectUseCase() {
     Get.put(LoginUseCase(authRepository: Get.find<AuthRepositoryImpl>()));
     Get.put<GetArtistsUseCase>(GetArtistsUseCase(Get.find<ArtistRepository>()));
+    Get.put(
+        GetArtistsByRegionUseCase(repository: Get.find<RegionRepository>()));
   }
 
   void injectController() {

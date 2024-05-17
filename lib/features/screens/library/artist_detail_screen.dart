@@ -16,419 +16,286 @@ class ArtistDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDarkModeOn = UDeviceUtils.isDarkMode(context);
     return Scaffold(
-      backgroundColor:
-          isDarkModeOn ? UColors.primaryBackground : UColors.primaryBackground,
-      body: NestedScrollView(
-        floatHeaderSlivers: true,
-        physics: const NeverScrollableScrollPhysics(),
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return [
-            SliverAppBar(
-              backgroundColor: isDarkModeOn
-                  ? UColors.primaryBackground
-                  : UColors.primaryBackground,
-              leading: IconButton(
-                icon: const Icon(Icons.arrow_back, color: UColors.primaryColor),
-                onPressed: () {
-                  finish(context);
-                },
-              ).visible(innerBoxIsScrolled),
-              title: artistData!.fullName!.text(),
-              actions: [
-                IconButton(
-                  icon: const Icon(Icons.subdirectory_arrow_right,
-                      color: UColors.primaryColor),
-                  onPressed: () {},
-                ).visible(innerBoxIsScrolled),
-                IconButton(
-                  icon: true
-                      ? const Icon(Icons.favorite, color: UColors.primaryColor)
-                      : Icon(Icons.favorite_outline,
-                          color: UColors.primaryColor),
-                  onPressed: () {},
-                ).visible(innerBoxIsScrolled),
+      // backgroundColor:
+      //     isDarkModeOn ? UColors.primaryBackground : UColors.primaryBackground,
+      // body: NestedScrollView(
+      //   floatHeaderSlivers: true,
+      //   physics: const NeverScrollableScrollPhysics(),
+      //   headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+      //     return [
+      //       SliverAppBar(
+      //         // backgroundColor: isDarkModeOn
+      //         //     ? UColors.primaryBackground
+      //         //     : UColors.primaryBackground,
+      //         leading: IconButton(
+      //           icon: const Icon(Icons.arrow_back, color: UColors.primaryColor),
+      //           onPressed: () {
+      //             finish(context);
+      //           },
+      //         ).visible(innerBoxIsScrolled),
+
+      //         leadingWidth: 30,
+      //         pinned: true,
+      //         elevation: 0.5,
+      //         expandedHeight: 300,
+      //         flexibleSpace: FlexibleSpaceBar(
+      //           titlePadding:
+      //               const EdgeInsets.only(bottom: 66, left: 30, right: 50),
+      //           collapseMode: CollapseMode.parallax,
+      //           background: Column(
+      //             children: [
+      //               Stack(
+      //                 children: [
+      //                   CachedImageWidget(
+      //                     url:
+      //                         'https://source.unsplash.com/random/?artist,music',
+      //                     height: 300,
+      //                     fit: BoxFit.cover,
+      //                     width: context.width(),
+      //                     // radius: USizes.defaultRadius ?? 100,
+      //                   ),
+      //                   Row(
+      //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //                     children: [
+      //                       Container(
+      //                         decoration: BoxDecoration(
+      //                           borderRadius: radius(100),
+      //                           color: context.cardColor,
+      //                         ),
+      //                         padding: const EdgeInsets.all(8),
+      //                         margin: const EdgeInsets.only(left: 16, top: 30),
+      //                         child: Icon(Icons.arrow_back,
+      //                             color: UColors.primaryColor),
+      //                       ).onTap(() {
+      //                         finish(context);
+      //                       }, borderRadius: radius(100)),
+      //                     ],
+      //                   ),
+      //                 ],
+      //               ),
+      //             ],
+      //           ),
+      //         ),
+      //       ),
+      //     ];
+      //   },
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            expandedHeight: 350.0,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Image.network(
+                'https://images.unsplash.com/photo-1589996448606-27d38c70f3bc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFydGlzdHN8ZW58MHx8MHx8fDA%3D',
+                fit: BoxFit.cover,
+              ),
+            ),
+            pinned: true,
+            leading: const Icon(Icons.arrow_back, color: Colors.black),
+            actions: <Widget>[
+              Icon(Icons.settings, color: Colors.black),
+            ],
+          ),
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: _RedContainer(
+              minHeight: 0,
+              maxHeight: 1000,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _RedContainer extends SliverPersistentHeaderDelegate {
+  _RedContainer({
+    required this.minHeight,
+    required this.maxHeight,
+  });
+
+  final double minHeight;
+  final double maxHeight;
+
+  @override
+  double get minExtent => minHeight;
+
+  @override
+  double get maxExtent => maxHeight;
+
+  @override
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
+    // Calculate the top padding based on the shrinkOffset
+    final double topPadding = 20 - shrinkOffset / 2;
+
+    return Container(
+      padding: EdgeInsets.only(top: topPadding),
+      decoration: const BoxDecoration(
+        color: Color.fromARGB(255, 41, 27, 129),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: Row(
+              //crossAxisAlignment: CrossAxisAlignment.stretch,
+              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                const Text(
+                  'Michael Jackson',
+                  style: TextStyle(color: Colors.white, fontSize: 25),
+                ),
+                const SizedBox(
+                  width: 70,
+                ),
+                ElevatedButton(onPressed: () {}, child: Text('Follow'))
               ],
-              leadingWidth: 30,
-              pinned: true,
-              elevation: 0.5,
-              expandedHeight: 450,
-              flexibleSpace: FlexibleSpaceBar(
-                titlePadding:
-                    const EdgeInsets.only(bottom: 66, left: 30, right: 50),
-                collapseMode: CollapseMode.parallax,
-                background: Column(
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 10, right: 10),
+            child: Text(
+              "uvbbaguhghubbhbvbabgbarhgbbhnignjds n jnfnn dsfinfjNNNFN fgjyjy fbbbqfefefgvagrgrgre re ragr gagragrtg5 y5wy5wyrtghty jys",
+              style: TextStyle(fontSize: 15, color: Colors.white),
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.all(10),
+            child: Text(
+              "Top Songs",
+              style: TextStyle(color: Colors.white, fontSize: 23),
+            ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: List.generate(
+              2,
+              (index) => _buildVideoPlayerWithPlayButton(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildIconButtonWithOverlay({
+    required IconData icon,
+    required Color color,
+  }) {
+    return Stack(
+      children: [
+        IconButton(
+          icon: Icon(icon),
+          onPressed: () {
+            // Add your onPressed logic here
+          },
+          color: Colors.green,
+        ),
+        Container(
+          color: Colors.black.withOpacity(0.6),
+        ),
+      ],
+    );
+  }
+
+  // Widget _buildVideoPlayerWithPlayButton() {
+  //   return GestureDetector(
+  //     onTap: () {
+  //       // Add your onTap logic here
+  //       print("object");
+  //     },
+  //     child: Padding(
+  //       padding: const EdgeInsets.all(8.0),
+  //       child: Container(
+  //         width: 80,
+  //         height: 80,
+  //         // margin: EdgeInsets.symmetric(vertical: 8),
+  //         decoration: BoxDecoration(
+  //           color: Colors.black,
+  //           borderRadius: BorderRadius.circular(8),
+  //         ),
+  //         child: const Icon(
+  //           Icons.play_arrow,
+  //           size: 40,
+  //           color: Colors.white,
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
+  Widget _buildVideoPlayerWithPlayButton() {
+    return GestureDetector(
+      onTap: () {
+        // Add your onTap logic here
+        print("object");
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            Container(
+              width: 90,
+              height: 90,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Icon(
+                Icons.play_arrow,
+                size: 40,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(width: 16),
+            const Column(
+              //crossAxisAlignment: CrossAxisAlignment.end,
+              // mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  'Video Title',
+                  style: TextStyle(color: Colors.white, fontSize: 14),
+                ),
+                SizedBox(height: 8),
+                Row(
                   children: [
-                    Stack(
-                      children: [
-                        CachedImageWidget(
-                          url:
-                              'https://source.unsplash.com/random/?artist,music',
-                          height: 300,
-                          fit: BoxFit.cover,
-                          width: context.width(),
-                          radius: USizes.defaultRadius ?? 100,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: radius(100),
-                                color: context.cardColor,
-                              ),
-                              padding: const EdgeInsets.all(8),
-                              margin: const EdgeInsets.only(left: 16, top: 30),
-                              child: Icon(Icons.arrow_back,
-                                  color: UColors.primaryColor),
-                            ).onTap(() {
-                              finish(context);
-                            }, borderRadius: radius(100)),
-                            Row(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: radius(100),
-                                    color: context.cardColor,
-                                  ),
-                                  padding: const EdgeInsets.all(8),
-                                  margin:
-                                      const EdgeInsets.only(right: 16, top: 30),
-                                  child: Icon(Icons.subdirectory_arrow_right,
-                                      color: UColors.primaryColor),
-                                ).onTap(() {}, borderRadius: radius(100)),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: radius(100),
-                                    color: context.cardColor,
-                                  ),
-                                  padding: const EdgeInsets.all(8),
-                                  margin:
-                                      const EdgeInsets.only(right: 16, top: 30),
-                                  child: true
-                                      ? Icon(Icons.favorite,
-                                          color: UColors.primaryColor)
-                                      : Icon(Icons.favorite_outline,
-                                          color: UColors.textPrimary),
-                                ).onTap(() {}, borderRadius: radius(100)),
-                              ],
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      color: isDarkModeOn
-                          ? UColors.primaryBackground!
-                          : UColors.primaryBackground!,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(artistData!.email.toString()),
-                          8.height,
-                          Text(
-                            artistData!.email.toString(),
-                            style: secondaryTextStyle(
-                                color: isDarkModeOn
-                                    ? Colors.white
-                                    : UColors.primaryColor,
-                                size: 12),
-                          ),
-                          8.height,
-                          Row(
-                            children: [
-                              Text(artistData!.totalLikes.toString(),
-                                  style: boldTextStyle()),
-                              2.width,
-                              Icon(Icons.star,
-                                  color: UColors.primaryColor, size: 16),
-                              Text(artistData!.totalLikes.toString(),
-                                  style: secondaryTextStyle(
-                                      color: UColors.textPrimary)),
-                            ],
-                          ),
-                          8.height,
-                          Wrap(
-                            spacing: 16,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  border:
-                                      Border.all(color: UColors.primaryColor),
-                                  color: isDarkModeOn
-                                      ? UColors.primaryBackground!
-                                      : UColors.primaryBackground!,
-                                  borderRadius: radius(32),
-                                ),
-                                padding: const EdgeInsets.all(8),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Icon(Icons.call_outlined,
-                                        color: UColors.primaryColor),
-                                    4.width,
-                                    Text('Call us',
-                                        style: boldTextStyle(
-                                            color: UColors.primaryColor)),
-                                  ],
-                                ),
-                              ).onTap(() {}, borderRadius: radius(32)),
-                              Container(
-                                decoration: BoxDecoration(
-                                  border:
-                                      Border.all(color: UColors.primaryColor),
-                                  color: isDarkModeOn
-                                      ? UColors.primaryBackground!
-                                      : UColors.primaryBackground!,
-                                  borderRadius: radius(32),
-                                ),
-                                padding: const EdgeInsets.all(8),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Image.asset(
-                                        UImages
-                                            .arianaGrandeChristmasSongPlaylist,
-                                        height: 20,
-                                        color: UColors.primaryColor),
-                                    8.width,
-                                    Text('Send Message',
-                                        style: boldTextStyle(
-                                            color: UColors.primaryColor)),
-                                  ],
-                                ),
-                              ).onTap(() {}),
-                            ],
-                          )
-                        ],
-                      ),
+                    Icon(Icons.visibility, color: Colors.white),
+                    SizedBox(width: 4),
+                    Text(
+                      '100 views',
+                      style: TextStyle(color: Colors.white),
                     ),
                   ],
                 ),
-              ),
-            ),
-          ];
-        },
-        body: Container(
-          decoration: BoxDecoration(
-            color: isDarkModeOn
-                ? UColors.primaryBackground!
-                : UColors.primaryBackground!,
-            borderRadius: radiusOnly(topLeft: 32, topRight: 32),
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                16.height,
-                SizedBox(
-                  height: 500,
-                )
+                SizedBox(height: 4),
+                Row(
+                  children: [
+                    Icon(Icons.thumb_up, color: Colors.white),
+                    SizedBox(width: 4),
+                    Text(
+                      '50 likes',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ],
+                ),
               ],
             ),
-          ),
+          ],
         ),
       ),
     );
   }
-  // Widget build(BuildContext context) {
-  //   return AppScaffold(
-  //     appBar: commonAppBarWidget(context),
-  //     body: AnimatedScrollView(
-  //       children: [
-  //         Row(
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           children: [
-  //             CachedImageWidget(
-  //               url: 'https://source.unsplash.com/random/?artist',
-  //               height: 130,
-  //               width: context.width(),
-  //               fit: BoxFit.cover,
-  //             ).cornerRadiusWithClipRRect(1).expand(flex: 2),
-  //             16.width,
-  //             Column(
-  //               crossAxisAlignment: CrossAxisAlignment.start,
-  //               children: [
-  //                 Row(
-  //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //                   children: [
-  //                     Marquee(
-  //                       child: Text(
-  //                         artistData!.fullName.validate(),
-  //                         style: boldTextStyle(),
-  //                         overflow: TextOverflow.ellipsis,
-  //                         maxLines: 1,
-  //                       ),
-  //                     ).expand(),
-  //                     16.width,
-  //                     const Icon(Icons.more_vert, size: 20).onTap(() {
-  //                       //
-  //                     }, borderRadius: radius(4.00)),
-  //                   ],
-  //                 ),
-  //                 10.height,
-  //                 ReadMoreText(
-  //                     'Amet minim mollit non deserunt ullamco est sit....',
-  //                     style: secondaryTextStyle()),
-  //                 22.height,
-  //                 Row(
-  //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //                   children: [
-  //                     Marquee(
-  //                         child: Text(
-  //                             artistData!.totalLikes.toString().validate(),
-  //                             style: secondaryTextStyle())),
-  //                     InkWell(
-  //                       onTap: () {},
-  //                       splashColor: Colors.transparent,
-  //                       child: Random().nextBool() // TODO : Remove this
-  //                           ? const GradientIconWidget(icon: Icons.favorite)
-  //                           : const Icon(Icons.favorite,
-  //                               size: 24, color: Colors.grey),
-  //                     ),
-  //                   ],
-  //                 ),
-  //               ],
-  //             ).expand(flex: 3),
-  //           ],
-  //         ).paddingSymmetric(horizontal: 16),
-  //         16.height,
-  //         CommonAppButton(
-  //           onPressed: () {
-  //             // artistData!.isFollow =
-  //             //     !artistData!.isFollow.validate();
-  //             // setState(() {});
-  //           },
-  //           btnText: Random().nextBool() == true ? 'Following' : 'Follow',
-  //           width: context.width() * 0.3,
-  //           gradient: Random().nextBool()
-  //               ? null
-  //               : primaryHomeLinearGradient(
-  //                   firstColor: Colors.grey, secondColor: Colors.grey),
-  //           height: 35,
-  //         ).paddingLeft(16),
-  //         20.height,
-  //         Row(
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           children: [
-  //             CachedImageWidget(
-  //               url: 'https://source.unsplash.com/random/?singer',
-  //               height: 130,
-  //               width: context.width(),
-  //               fit: BoxFit.cover,
-  //             ).cornerRadiusWithClipRRect(18).expand(flex: 2),
-  //             16.width,
-  //             Column(
-  //               crossAxisAlignment: CrossAxisAlignment.start,
-  //               children: [
-  //                 Row(
-  //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //                   children: [
-  //                     Marquee(
-  //                       child: Text(
-  //                         artistData!.fullName.validate(),
-  //                         style: boldTextStyle(),
-  //                         overflow: TextOverflow.ellipsis,
-  //                         maxLines: 1,
-  //                       ),
-  //                     ).expand(),
-  //                     16.width,
-  //                     const Icon(Icons.more_vert, size: 20).onTap(() {
-  //                       //
-  //                     }, borderRadius: radius(USizes.defaultRadius)),
-  //                   ],
-  //                 ),
-  //                 10.height,
-  //                 ReadMoreText(
-  //                     'Amet minim mollit non deserunt ullamco est sit....',
-  //                     style: secondaryTextStyle()),
-  //                 22.height,
-  //                 Row(
-  //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //                   children: [
-  //                     Marquee(
-  //                         child: Text(
-  //                             artistData!.totalLikes.toString().validate(),
-  //                             style: secondaryTextStyle())),
-  //                     InkWell(
-  //                       // onTap: () {
-  //                       //   Random().nextBool() =
-  //                       //       !widget.artistData!.isLike.validate();
-  //                       //   setState(() {});
-  //                       // },
-  //                       splashColor: Colors.transparent,
-  //                       child: artistData!.totalLikes
-  //                                   .toString()
-  //                                   .validate()
-  //                                   .toInt() >
-  //                               0
-  //                           ? const GradientIconWidget(icon: Icons.favorite)
-  //                           : const Icon(Icons.favorite,
-  //                               size: 24, color: Colors.grey),
-  //                     ),
-  //                   ],
-  //                 ),
-  //               ],
-  //             ).expand(flex: 3),
-  //           ],
-  //         ).paddingSymmetric(horizontal: 16),
-  //         16.height,
-  //         Row(
-  //           mainAxisAlignment: MainAxisAlignment.spaceAround,
-  //           children: [
-  //             IconButton(
-  //               icon: Image.asset(ic_playlist, height: 22, width: 22),
-  //               padding: EdgeInsets.zero,
-  //               onPressed: () {
-  //                 //
-  //               },
-  //             ),
-  //             12.width,
-  //             IconButton(
-  //               icon: const IconBackgroundWidget(
-  //                   icon: ic_add,
-  //                   color: Colors.white,
-  //                   boxHeight: 22,
-  //                   boxWidth: 22,
-  //                   padding: 6),
-  //               padding: EdgeInsets.zero,
-  //               onPressed: () {
-  //                 //
-  //               },
-  //             ),
-  //             12.width,
-  //             IconButton(
-  //               icon: IconBackgroundWidget(
-  //                   icon: ic_play,
-  //                   color: Colors.grey.withAlpha(25),
-  //                   padding: 6,
-  //                   height: 30,
-  //                   width: 30),
-  //               padding: EdgeInsets.zero,
-  //               onPressed: () {
-  //                 //
-  //               },
-  //             ),
-  //             12.width,
-  //             IconButton(
-  //               icon: Image.asset(ic_shuffle, height: 22, width: 22),
-  //               padding: EdgeInsets.zero,
-  //               onPressed: () {
-  //                 //
-  //               },
-  //             ),
-  //             12.width,
-  //             IconButton(
-  //               icon: Image.asset(ic_share, height: 22, width: 22),
-  //               padding: EdgeInsets.zero,
-  //               onPressed: () {
-  //                 //
-  //               },
-  //             ),
-  //           ],
-  //         ),
-  //         20.height,
-  //       ],
-  //     ),
-  //   );
-  // }
+
+  @override
+  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
+  }
 }

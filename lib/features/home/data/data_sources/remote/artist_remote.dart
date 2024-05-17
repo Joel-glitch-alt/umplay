@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:umplay/core/network/rest_client.dart';
 import 'package:umplay/features/home/data/models/artist_model.dart';
@@ -10,7 +11,7 @@ abstract class ArtistRemoteDataSource {
 }
 
 class ArtistRemoteDataSourceImpl implements ArtistRemoteDataSource {
-  Restclient restClient;
+  RestClient restClient;
 
   ArtistRemoteDataSourceImpl(
     this.restClient,
@@ -20,15 +21,15 @@ class ArtistRemoteDataSourceImpl implements ArtistRemoteDataSource {
   Future<HttpResponse<List<ArtistModel>>> getAllArtists() async {
     try {
       final response = await restClient.getAllArtists();
+
       if (response.response.statusCode == 200) {
         final dynamic responseBody = response.data;
 
         // Check if 'success' is true and 'artistes' exist in 'info'
-        if (responseBody['success'] == true &&
-            responseBody['info'] != null &&
-            responseBody['info']['artistes'] != null) {
+        if (responseBody['success'] == true && responseBody['info'] != null) {
           // Extract the list of artists
-          final List<dynamic> artistesJson = responseBody['info']['artistes'];
+          print(responseBody);
+          final List<dynamic> artistesJson = responseBody['info'];
           final List<ArtistModel> artists = artistesJson
               .map((artistJson) => ArtistModel.fromJson(artistJson))
               .toList();
@@ -64,7 +65,7 @@ class ArtistRemoteDataSourceImpl implements ArtistRemoteDataSource {
   
 
 // class ArtistRemoteDataSourceImpl implements ArtistRemoteDataSource {
-//   Restclient restClient;
+//   RestClient restClient;
 
 //   ArtistRemoteDataSourceImpl(
 //     this.restClient,
